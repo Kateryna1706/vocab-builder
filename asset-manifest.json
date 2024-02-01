@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/vocab-builder/static/css/main.7acaea2f.css",
+    "main.js": "/vocab-builder/static/js/main.61c58d64.js",
+    "index.html": "/vocab-builder/index.html",
+    "main.7acaea2f.css.map": "/vocab-builder/static/css/main.7acaea2f.css.map",
+    "main.61c58d64.js.map": "/vocab-builder/static/js/main.61c58d64.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.61c58d64.js"
+  ]
+}
