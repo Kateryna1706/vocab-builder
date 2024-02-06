@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'FixelDisplay-Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('FixelDisplay-Regular'),
+    url('./FixelDisplay-Regular.otf') format('otf');
+}
+@font-face {
+  font-family: 'FixelDisplay-Medium';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('FixelDisplay-Medium'),
+    url('./FixelDisplay-Medium.otf') format('otf');
+}
+@font-face {
+  font-family: 'FixelDisplay-SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('FixelDisplay-SemiBold'),
+    url('./FixelDisplay-SemiBold.otf') format('otf');
+}
+@font-face {
+  font-family: 'FixelDisplay-Bold';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('FixelDisplay-Bold'), url('./FixelDisplay-Bold.otf') format('otf');
+}
