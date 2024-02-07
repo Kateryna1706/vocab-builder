@@ -1,10 +1,18 @@
+import { NavLink } from 'react-router-dom';
+
 const UserNav = () => {
   return (
     <nav>
       <ul>
-        <li>Dictionary</li>
-        <li>Recommend</li>
-        <li>Training</li>
+        <li>
+          <NavLink to="/dictionary">Dictionary</NavLink>
+        </li>
+        <li>
+          <NavLink to="/recommend">Recommend</NavLink>
+        </li>
+        <li>
+          <NavLink to="/training">Training</NavLink>
+        </li>
       </ul>
     </nav>
   );
