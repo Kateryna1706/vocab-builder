@@ -158,4 +158,4 @@ const wordsSlice = createSlice({
   },
 });
 
-export const contactsReducer = wordsSlice.reducer;
+export const wordsReducer = wordsSlice.reducer;

@@ -1,93 +1,82 @@
 import styled from '@emotion/styled';
-import { ReactComponent as EyeOf } from '../Icons/eye-off.svg';
+
 import { Form } from 'formik';
 
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-self: center;
+  flex-grow: 3;
+  box-sizing: border-box;
   width: 100%;
+  max-width: 375px;
+  padding: 32px 16px;
 
-  background-color: transparent;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+
+  background-color: rgba(133, 170, 159, 0.1);
+
+  a {
+    margin-top: 16px;
+
+    font-family: 'FixelDisplay-Bold', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+
+    color: rgba(18, 20, 23, 0.5);
+    text-align: center;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      color: #121417;
+    }
+  }
+
+  @media (min-width: 768px) {
+    flex-grow: 0;
+    width: 628px;
+    max-width: 628px;
+    padding: 48px 64px;
+    border-radius: 30px;
+  }
 `;
 
 export const Header = styled.h1`
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  font-family: 'FixelDisplay-Bold', sans-serif;
   font-size: 40px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 48px;
   letter-spacing: -0.02em;
 
   color: #121417;
 
-  @media (max-width: 768px) {
-    margin-bottom: 10px;
-    font-size: 30px;
+  @media (min-width: 768px) {
+    margin-bottom: 20px;
+
+    font-size: 40px;
+    line-height: 48px;
   }
 `;
 
 export const Text = styled.p`
-  margin: 0;
+  margin: 0 0 16px 0;
   font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
+  line-height: 24px;
 
-  color: #121417;
+  color: rgba(18, 20, 23, 0.8);
+
+  @media (min-width: 768px) {
+    margin-bottom: 32px;
+
+    font-size: 20px;
+    line-height: 30px;
+  }
 `;
-
-// export const RadioTitle = styled.p`
-//   margin: 0 0 20px 0;
-//   font-size: 24px;
-//   font-weight: 500;
-//   line-height: 32px;
-
-//   color: #121417;
-// `;
-
-// export const TeacherInfo = styled.div`
-//   display: flex;
-//   gap: 14px;
-//   margin-top: 20px;
-//   margin-bottom: 40px;
-
-//   @media (max-width: 768px) {
-//     margin-top: 10px;
-//     margin-bottom: 20px;
-//     font-size: 30px;
-//   }
-// `;
-
-// export const TeacherName = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 4px;
-
-//   .value {
-//     font-size: 12px;
-//     font-weight: 500;
-//     line-height: 16px;
-
-//     color: #8a8a89;
-//   }
-
-//   .name {
-//     font-size: 16px;
-//     font-weight: 500;
-//     line-height: 24px;
-
-//     color: #121417;
-//   }
-// `;
-
-// export const TeacherAvatar = styled.div`
-//   width: 44px;
-//   height: 44px;
-
-//   img {
-//     width: 100%;
-//     border-radius: 50%;
-//   }
-// `;
 
 export const FormWrapper = styled(Form)`
   display: flex;
@@ -97,12 +86,10 @@ export const FormWrapper = styled(Form)`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin: 40px 0;
+  gap: 14px;
 
-  @media (max-width: 768px) {
-    gap: 10px;
-    margin: 20px 0;
+  @media (min-width: 768px) {
+    gap: 18px;
   }
 `;
 
@@ -113,105 +100,73 @@ export const Label = styled.label`
 
   input {
     box-sizing: border-box;
-    height: 54px;
+    height: 56px;
     width: 100%;
     padding: 16px 18px;
     border: 1px solid rgba(18, 20, 23, 0.1);
-    border-radius: 12px;
+    border-radius: 15px;
+
+    background-color: transparent;
 
     &::placeholder {
       font-size: 16px;
       font-weight: 400;
-      line-height: 22px;
+      line-height: 24px;
 
       color: #121417;
     }
 
+    &:hover,
     &:focus {
-      outline-color: #f4c550;
+      outline-color: #85aa9f;
+    }
+
+    &:valid {
+      border: 1px solid #3cbf61;
+    }
+
+    &:invalid {
+      border: 1px solid #d80027;
     }
   }
-`;
 
-// export const RadioLabel = styled.label`
-//   position: relative;
+  .icon {
+    position: absolute;
+    top: 18px;
+    right: 18px;
 
-//   cursor: pointer;
+    height: 24px;
+    width: 24px;
 
-//   &:not(:last-of-type) {
-//     margin-bottom: 16px;
-//   }
+    stroke: #121417;
+    cursor: pointer;
 
-//   input {
-//     visibility: hidden;
-//   }
-
-//   input:checked ~ div {
-//     border: 2px solid #f4c550;
-//   }
-
-//   input:checked ~ div .selected {
-//     visibility: visible;
-//   }
-// `;
-
-// export const CustomRadioButton = styled.div`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 20px;
-//   height: 20px;
-//   border: 2px solid rgba(18, 20, 23, 0.2);
-//   border-radius: 50%;
-// `;
-
-// export const Circle = styled.div`
-//   width: 12px;
-//   height: 12px;
-//   border-radius: 50%;
-//   background-color: #f4c550;
-//   visibility: hidden;
-// `;
-
-// export const RadioText = styled.span`
-//   padding-left: 32px;
-
-//   font-size: 16px;
-//   line-height: 22px;
-//   font-weight: 400;
-// `;
-
-export const Icon = styled(EyeOf)`
-  position: absolute;
-  top: 17px;
-  right: 17px;
-
-  stroke: #121417;
-  cursor: pointer;
-
-  &:hover {
-    stroke: #f4c550;
+    &:hover {
+      stroke: #f4c550;
+    }
   }
 `;
 
 export const Button = styled.button`
   padding: 16px;
+  margin-top: 32px;
   border: none;
-  border-radius: 12px;
+  border-radius: 30px;
 
-  font-size: 18px;
+  font-family: 'FixelDisplay-Bold', sans-serif;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 28px;
+  line-height: 24px;
+  word-spacing: 18px;
 
-  background-color: #ffdc86;
+  color: #fcfcfc;
+
+  background-color: #85aa9f;
 
   cursor: pointer;
 
   &:hover,
   &:focus {
-    background-color: #f4c550;
+    background-color: #a5c0b8;
   }
 `;
