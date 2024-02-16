@@ -120,14 +120,6 @@ export const Label = styled.label`
     &:focus {
       outline-color: #85aa9f;
     }
-
-    &:valid {
-      border: 1px solid #3cbf61;
-    }
-
-    &:invalid {
-      border: 1px solid #d80027;
-    }
   }
 
   .icon {
@@ -144,6 +136,36 @@ export const Label = styled.label`
     &:hover {
       stroke: #f4c550;
     }
+  }
+`;
+
+export const MessageError = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1px;
+
+  margin-top: 4px;
+
+  span {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.1rem;
+    color: #d80027;
+  }
+`;
+
+export const MessageSuccess = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1px;
+
+  margin-top: 4px;
+
+  span {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.1rem;
+    color: #3cbf61;
   }
 `;
 
