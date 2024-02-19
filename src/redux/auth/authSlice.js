@@ -40,7 +40,8 @@ const authSlice = createSlice({
         handlePending(state);
       })
       .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
@@ -63,7 +64,9 @@ const authSlice = createSlice({
         handlePending(state);
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })

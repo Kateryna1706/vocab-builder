@@ -5,7 +5,7 @@ import { Notify } from 'notiflix';
 
 import { useState } from 'react';
 import { logIn } from 'redux/auth/authOperations';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as EyeOf } from '../Icons/eye-off.svg';
 import { ReactComponent as Eye } from '../Icons/eye.svg';
 import { ReactComponent as Error } from '../Icons/error.svg';
@@ -41,8 +41,8 @@ const SignupSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (values, actions) => {
     const { email, password } = values;
@@ -54,20 +54,23 @@ const LoginForm = () => {
       })
     )
       .then(data => {
-        switch (data.payload) {
-          case 'Request failed with status code 400':
-            Notify.failure(`Bad request (invalid request body)`);
-            break;
-          case 'Request failed with status code 401':
-            Notify.failure(`Email or password invalid`);
-            break;
-
-          case 'Request failed with status code 404':
-            Notify.failure(`Service not found`);
-            break;
-          default:
-            Notify.success(`Login completed successfully.`);
+        if (data.payload === 'Request failed with status code 400') {
+          Notify.failure(`Bad request (invalid request body)`);
+          return;
         }
+
+        if (data.payload === 'Request failed with status code 401') {
+          Notify.failure(`Email or password invalid`);
+          return;
+        }
+
+        if (data.payload === 'Request failed with status code 404') {
+          Notify.failure(`Service not found`);
+          return;
+        }
+
+        Notify.success(`Login completed successfully.`);
+        navigate('/dictionary');
       })
       .catch(error => {
         Notify.failure(error);

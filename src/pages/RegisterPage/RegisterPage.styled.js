@@ -37,6 +37,7 @@ export const Position = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  flex-grow: 3;
 
   @media (min-width: 768px) {
     flex-direction: column-reverse;

@@ -15,7 +15,7 @@ import {
 } from './RegisterForm.styled';
 import { useState } from 'react';
 import { register } from 'redux/auth/authOperations';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as EyeOf } from '../Icons/eye-off.svg';
 import { ReactComponent as Eye } from '../Icons/eye.svg';
 import { ReactComponent as Error } from '../Icons/error.svg';
@@ -45,10 +45,8 @@ const SignupSchema = Yup.object().shape({
 
 const RegisterForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
-  // const valueError = useSelector(selectError);
-  // const error = useMemo(() => valueError, [valueError]);
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (values, actions) => {
     const { name, email, password } = values;
@@ -61,22 +59,23 @@ const RegisterForm = () => {
       })
     )
       .then(data => {
-        switch (data.payload) {
-          case 'Request failed with status code 400':
-            Notify.failure(`Bad request (invalid request body)`);
-            break;
-
-          case 'Request failed with status code 404':
-            Notify.failure(`Service not found`);
-            break;
-
-          case 'Request failed with status code 409':
-            Notify.failure(`Such email already exists`);
-            break;
-
-          default:
-            Notify.success(`Registration completed successfully.`);
+        if (data.payload === 'Request failed with status code 400') {
+          Notify.failure(`Bad request (invalid request body)`);
+          return;
         }
+
+        if (data.payload === 'Request failed with status code 404') {
+          Notify.failure(`Service not found`);
+          return;
+        }
+
+        if (data.payload === 'Request failed with status code 409') {
+          Notify.failure(`Such email already exists`);
+          return;
+        }
+
+        Notify.success(`Registration completed successfully.`);
+        navigate('/dictionary');
       })
       .catch(error => {
         Notify.failure(error);
@@ -88,16 +87,6 @@ const RegisterForm = () => {
   const handleClick = () => {
     setVisiblePassword(prevState => !prevState);
   };
-
-  // useEffect(() => {
-  //   if (!error) {
-  //     return;
-  //   }
-
-  //   if (error) {
-  //     Notify.failure(error);
-  //   }
-  // }, [error]);
 
   return (
     <FormContainer>

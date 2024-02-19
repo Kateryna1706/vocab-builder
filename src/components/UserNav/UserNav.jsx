@@ -1,19 +1,20 @@
 import { NavLink } from 'react-router-dom';
+import { ListNav, ListNavItem } from './UserNav.styled';
 
 const UserNav = () => {
   return (
     <nav>
-      <ul>
-        <li>
+      <ListNav>
+        <ListNavItem>
           <NavLink to="/dictionary">Dictionary</NavLink>
-        </li>
-        <li>
+        </ListNavItem>
+        <ListNavItem>
           <NavLink to="/recommend">Recommend</NavLink>
-        </li>
-        <li>
+        </ListNavItem>
+        <ListNavItem>
           <NavLink to="/training">Training</NavLink>
-        </li>
-      </ul>
+        </ListNavItem>
+      </ListNav>
     </nav>
   );
 };

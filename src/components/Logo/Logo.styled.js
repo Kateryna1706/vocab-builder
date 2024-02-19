@@ -5,9 +5,6 @@ export const Container = styled.div`
   align-items: center;
   gap: 16px;
   margin-right: auto;
-  margin-left: 16px;
-  margin-top: 16px;
-  /* margin-bottom: 12px; */
 
   span {
     font-family: 'FixelDisplay-SemiBold', sans-serif;
