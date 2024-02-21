@@ -15,13 +15,10 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      console.log(credentials);
       const res = await axios.post(
         'https://vocab-builder-backend.p.goit.global/api/users/signup',
         credentials
       );
-
-      console.log(res.data);
 
       setAuthHeader(res.data.token);
       return res.data;
@@ -39,7 +36,7 @@ export const logIn = createAsyncThunk(
         'https://vocab-builder-backend.p.goit.global/api/users/signin',
         credentials
       );
-      console.log(res.data);
+
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {

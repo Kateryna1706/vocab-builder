@@ -1,13 +1,34 @@
 import styled from '@emotion/styled';
 
 export const ContainerHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Container = styled.div`
+  box-sizing: border-box;
+
   position: relative;
   display: flex;
   align-items: center;
-  padding: 16px;
 
-  svg {
-    cursor: pointer;
+  width: 100%;
+  max-width: 375px;
+  padding: 16px 16px;
+
+  background-color: #ffffff;
+
+  @media (min-width: 768px) {
+    width: 768px;
+    max-width: 768px;
+    padding: 20px 32px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 1440px;
+    max-width: 1440px;
+    padding: 20px 100px;
   }
 `;
 
@@ -18,7 +39,7 @@ export const WrapperNavAndBar = styled.div`
 
   display: flex;
   flex-direction: ${props => (props.$burgerMenu ? 'column' : 'row')};
-  justify-content: ${props => (props.$burgerMenu ? 'start' : 'start')};
+  justify-content: start;
   gap: ${props => (props.$burgerMenu ? '139px' : '0')};
 
   height: ${props => (props.$burgerMenu ? '100vh' : 'auto')};
@@ -31,22 +52,29 @@ export const WrapperNavAndBar = styled.div`
     height: 318px;
 
     @media (min-width: 768px) and (max-width: 1439px) {
-      
+      width: 498px;
+      height: 435px;
     }
 
-    /* @media (min-width: 1440px) {
-      width: 498px;
-      height: 475px;
-    } */
+    @media (min-width: 1440px) {
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1439px) {
+    width: ${props => (props.$burgerMenu ? '300px' : 'auto')};
   }
 `;
 
-export const Container = styled.div`
+export const WrapperNavBarIcon = styled.div`
   display: flex;
   flex-direction: ${props => (props.$burgerMenu ? 'column-reverse' : 'row')};
   justify-content: ${props => (props.$burgerMenu ? 'start' : 'start')};
   gap: ${props => (props.$burgerMenu ? '166px' : '0')};
   padding: ${props => (props.$burgerMenu ? '16px' : '0')};
+
+  @media (min-width: 1440px) {
+    gap: 303px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -54,4 +82,32 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: ${props => (props.$burgerMenu ? '0' : '8px')};
+
+  .cross {
+    width: 32px;
+    height: 32px;
+
+    stroke: #fcfcfc;
+
+    cursor: pointer;
+
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .menu {
+    width: 32px;
+    height: 22px;
+
+    stroke: #121417;
+
+    cursor: pointer;
+
+    @media (min-width: 768px) and (max-width: 1439px) {
+      width: 40px;
+      height: 28px;
+    }
+  }
 `;

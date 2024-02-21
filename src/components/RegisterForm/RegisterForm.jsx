@@ -27,6 +27,8 @@ const initialValues = {
   password: '',
 };
 
+const matchPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/;
+
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
@@ -40,7 +42,10 @@ const SignupSchema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required')
-    .matches(/^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/, 'Error password'),
+    .matches(
+      matchPassword,
+      'Must be at least 6 characters long and contain one uppercase letter, one lowercase letter, and one number.'
+    ),
 });
 
 const RegisterForm = () => {

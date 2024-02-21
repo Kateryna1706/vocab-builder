@@ -1,11 +1,17 @@
+import { useLocation } from 'react-router-dom';
 import logo from '../../image/logo.jpg';
-import { Container } from './Logo.styled';
+import { Container, Wrapper } from './Logo.styled';
 
 const Logo = () => {
+  const location = useLocation();
+  const page = location.pathname;
+
   return (
-    <Container>
-      <img src={logo} alt="logo" />
-      <span>VocabBuilder</span>
+    <Container $hasPadding={page === '/login' || page === '/register'}>
+      <Wrapper>
+        <img src={logo} alt="logo" />
+        <span>VocabBuilder</span>
+      </Wrapper>
     </Container>
   );
 };

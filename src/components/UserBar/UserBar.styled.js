@@ -15,6 +15,10 @@ export const UserName = styled.span`
   font-style: normal;
 
   color: ${props => (props.$burgerMenu ? '#fcfcfc' : '#121417')};
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const Avatar = styled.div`
@@ -29,6 +33,15 @@ export const Avatar = styled.div`
   background-color: ${props => (props.$burgerMenu ? '#FCFCFC' : '#85aa9f')};
 
   svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     fill: ${props => (props.$burgerMenu ? '#85AA9F' : '#fcfcfc')};
+  }
+
+  @media (min-width: 768px) {
+    width: 48px;
+    height: 48px;
   }
 `;

@@ -6,8 +6,6 @@ import { Avatar, ContainerBar, UserName } from './UserBar.styled';
 const UserBar = ({ burgerMenu }) => {
   const user = useSelector(selectUser);
 
-  console.log(user.name);
-
   return (
     <ContainerBar>
       <UserName $burgerMenu={burgerMenu}>{user.name}</UserName>

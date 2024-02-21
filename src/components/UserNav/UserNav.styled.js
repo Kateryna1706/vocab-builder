@@ -5,6 +5,11 @@ export const ListNav = styled.ul`
   flex-direction: column;
 
   gap: 28px;
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 export const ListNavItem = styled.li`
@@ -23,6 +28,15 @@ export const ListNavItem = styled.li`
       color: #121417;
 
       background-color: #fcfcfc;
+
+      @media (min-width: 1440px) {
+        color: #fcfcfc;
+        background-color: #85aa9f;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      color: #121417;
     }
   }
 `;
