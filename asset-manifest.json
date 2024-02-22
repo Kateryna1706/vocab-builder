@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/vocab-builder/static/css/main.99a36860.css",
-    "main.js": "/vocab-builder/static/js/main.e2066f3c.js",
+    "main.js": "/vocab-builder/static/js/main.be54fa35.js",
     "static/js/606.6c12f8aa.chunk.js": "/vocab-builder/static/js/606.6c12f8aa.chunk.js",
     "static/js/312.63209699.chunk.js": "/vocab-builder/static/js/312.63209699.chunk.js",
-    "static/js/209.74b5db56.chunk.js": "/vocab-builder/static/js/209.74b5db56.chunk.js",
-    "static/js/287.aaeec1d3.chunk.js": "/vocab-builder/static/js/287.aaeec1d3.chunk.js",
+    "static/js/209.cb75c451.chunk.js": "/vocab-builder/static/js/209.cb75c451.chunk.js",
+    "static/js/287.4dacb8c9.chunk.js": "/vocab-builder/static/js/287.4dacb8c9.chunk.js",
     "static/js/611.28d72dae.chunk.js": "/vocab-builder/static/js/611.28d72dae.chunk.js",
     "static/js/306.a033ebd5.chunk.js": "/vocab-builder/static/js/306.a033ebd5.chunk.js",
     "static/media/FixelDisplay-Bold.otf": "/vocab-builder/static/media/FixelDisplay-Bold.fae02f44b65d58c7e2da.otf",
@@ -17,24 +17,28 @@
     "static/media/illustration.webp": "/vocab-builder/static/media/illustration.49e86480236e393ce148.webp",
     "static/media/illustration-menu.webp": "/vocab-builder/static/media/illustration-menu.142ec9c8edfcaa456114.webp",
     "index.html": "/vocab-builder/index.html",
+    "static/media/vector.svg": "/vocab-builder/static/media/vector.8a9e420c4c217353a3b17dd179d50bae.svg",
     "static/media/eye-off.svg": "/vocab-builder/static/media/eye-off.3df39699b93a3889a475c527562b099f.svg",
     "static/media/eye.svg": "/vocab-builder/static/media/eye.561e8ec3e4f1072089624ee4031394db.svg",
     "static/media/error.svg": "/vocab-builder/static/media/error.b1687d2b68fb7a6611c2d03da414fda9.svg",
+    "static/media/search.svg": "/vocab-builder/static/media/search.dee4d8a05ad4d1bd15314d405d95adac.svg",
     "static/media/success.svg": "/vocab-builder/static/media/success.031b408199e3e16b328f8c6431713d93.svg",
+    "static/media/switch-horizontal.svg": "/vocab-builder/static/media/switch-horizontal.b7e2c2433fa559757a1f92bf41fe96aa.svg",
+    "static/media/plus-add.svg": "/vocab-builder/static/media/plus-add.2dbfdae14af52fec3dc06d3779832b6a.svg",
     "static/media/user.svg": "/vocab-builder/static/media/user.602d751d7d80726061d5410219388463.svg",
     "static/media/Nav.svg": "/vocab-builder/static/media/Nav.a1d19c1ac5bed5ae615c3ee42d2262f6.svg",
     "static/media/cross.svg": "/vocab-builder/static/media/cross.564f255c8df3a91bbc72d8200219338b.svg",
     "main.99a36860.css.map": "/vocab-builder/static/css/main.99a36860.css.map",
-    "main.e2066f3c.js.map": "/vocab-builder/static/js/main.e2066f3c.js.map",
+    "main.be54fa35.js.map": "/vocab-builder/static/js/main.be54fa35.js.map",
     "606.6c12f8aa.chunk.js.map": "/vocab-builder/static/js/606.6c12f8aa.chunk.js.map",
     "312.63209699.chunk.js.map": "/vocab-builder/static/js/312.63209699.chunk.js.map",
-    "209.74b5db56.chunk.js.map": "/vocab-builder/static/js/209.74b5db56.chunk.js.map",
-    "287.aaeec1d3.chunk.js.map": "/vocab-builder/static/js/287.aaeec1d3.chunk.js.map",
+    "209.cb75c451.chunk.js.map": "/vocab-builder/static/js/209.cb75c451.chunk.js.map",
+    "287.4dacb8c9.chunk.js.map": "/vocab-builder/static/js/287.4dacb8c9.chunk.js.map",
     "611.28d72dae.chunk.js.map": "/vocab-builder/static/js/611.28d72dae.chunk.js.map",
     "306.a033ebd5.chunk.js.map": "/vocab-builder/static/js/306.a033ebd5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.99a36860.css",
-    "static/js/main.e2066f3c.js"
+    "static/js/main.be54fa35.js"
   ]
 }
