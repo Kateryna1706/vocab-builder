@@ -13,3 +13,5 @@ export const selectAnswers = state => state.words.answers;
 export const selectIsLoading = state => state.words.isLoading;
 
 export const selectError = state => state.words.error;
+
+export const selectFilter = state => state.filter;

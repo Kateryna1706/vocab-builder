@@ -29,7 +29,9 @@ const Header = () => {
         <Logo></Logo>
         <WrapperNavAndBar $burgerMenu={menuIsOpen}>
           <WrapperNavBarIcon $burgerMenu={menuIsOpen}>
-            {menuIsOpen || isDesktop ? <UserNav /> : null}
+            {menuIsOpen || isDesktop ? (
+              <UserNav closeMenu={handleClickMenuIcon} />
+            ) : null}
             <Wrapper $burgerMenu={menuIsOpen}>
               <UserBar burgerMenu={menuIsOpen} />
               {!isDesktop && menuIsOpen && (

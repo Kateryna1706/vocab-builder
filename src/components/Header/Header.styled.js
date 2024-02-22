@@ -37,6 +37,8 @@ export const WrapperNavAndBar = styled.div`
   top: 0;
   right: 0;
 
+  z-index: 12;
+
   display: flex;
   flex-direction: ${props => (props.$burgerMenu ? 'column' : 'row')};
   justify-content: start;

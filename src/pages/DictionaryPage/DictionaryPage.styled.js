@@ -7,6 +7,8 @@ export const Container = styled.div`
   max-width: 375px;
   padding: 32px 16px 48px;
 
+  background-color: transparent;
+
   @media (min-width: 768px) {
     width: 768px;
     max-width: 768px;
@@ -24,4 +26,6 @@ export const MainBlock = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  background-color: #f8f8f8;
 `;

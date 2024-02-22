@@ -7,7 +7,6 @@ import {
   selectError,
   selectIsLoggedIn,
   selectToken,
-  selectUser,
 } from 'redux/auth/authSelectors';
 import Loader from './Loader/Loader';
 import { Notify } from 'notiflix';
@@ -23,11 +22,6 @@ export const App = () => {
   const token = useSelector(selectToken);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const error = useSelector(selectError);
-
-  const user = useSelector(selectUser);
-
-  console.log(token);
-  console.log(user);
 
   useEffect(() => {
     if (!token || isLoggedIn) return;
