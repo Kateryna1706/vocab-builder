@@ -13,19 +13,25 @@ import {
 import { changeFilter } from 'redux/words/filterSlice';
 import { ReactComponent as Search } from '../Icons/search.svg';
 import { ReactComponent as Vector } from '../Icons/vector.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { selectCategories } from 'redux/words/wordsSelectors';
+import { fetchOwnWords } from 'redux/words/wordsOperations';
 
 export const Filter = () => {
   const dispatch = useDispatch();
+  const categories = useSelector(selectCategories);
   const [visibleDropdown, setVisibleDropdown] = useState(false);
   const [category, setCategory] = useState('');
-  const [word, setWord] = useState('');
-  const categories = useSelector(selectCategories);
+  const [keywords, setKeywords] = useState('');
+  const [isVerb, setIsVerb] = useState(false);
+  const [debouncedKeywords, setDebouncedKeywords] = useState('');
+  const [isIrregular, setIsIrregular] = useState(false);
+  const [page, setPage] = useState(1);
+  const limit = 7;
 
   const handleWordFilterChange = event => {
     const { value } = event.currentTarget;
-    setWord(value);
+    setKeywords(value.trim());
   };
 
   const handleCategoryFilterChange = event => {
@@ -34,7 +40,16 @@ export const Filter = () => {
   };
 
   const handleClickSearch = () => {
-    dispatch(changeFilter({ word }));
+    dispatch(changeFilter({ keywords }));
+    dispatch(
+      fetchOwnWords({
+        keywords: debouncedKeywords,
+        category,
+        isIrregular,
+        page,
+        limit,
+      })
+    );
   };
 
   const handleClickDropDown = () => {
@@ -44,18 +59,33 @@ export const Filter = () => {
   const handleClickFilterCategory = event => {
     const value = event.currentTarget.innerHTML;
     setCategory(value);
+    setIsVerb(value === 'verb');
     dispatch(changeFilter({ category: value }));
     setVisibleDropdown(prevState => !prevState);
   };
 
+  const changeCheckbox = event => {
+    const { value } = event.currentTarget;
+    setIsIrregular(value === 'irregular');
+  };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      console.log('timeout');
+      setDebouncedKeywords(keywords);
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [keywords]);
+
   return (
-    <Wrapper>
+    <Wrapper $isVerb={!isVerb}>
       <Label>
         <Search className="word" onClick={handleClickSearch} />
         <input
           type="text"
           name="word"
-          value={word}
+          value={keywords}
           className="wordInput"
           onChange={handleWordFilterChange}
         />
@@ -80,22 +110,34 @@ export const Filter = () => {
           </Dropdown>
         )}
       </Label>
-      <RadioWrapper>
-        <RadioLabel>
-          <input type="radio" name="reason" value="Exams and coursework" />
-          <CustomRadioButton>
-            <Circle className="selected"></Circle>
-          </CustomRadioButton>
-          <RadioText>Regular</RadioText>
-        </RadioLabel>
-        <RadioLabel>
-          <input type="radio" name="reason" value="Culture, travel or hobby" />
-          <CustomRadioButton>
-            <Circle className="selected"></Circle>
-          </CustomRadioButton>
-          <RadioText>Irregular</RadioText>
-        </RadioLabel>
-      </RadioWrapper>
+      {isVerb && (
+        <RadioWrapper>
+          <RadioLabel>
+            <input
+              type="radio"
+              name="verb"
+              value="regular"
+              onChange={changeCheckbox}
+            />
+            <CustomRadioButton>
+              <Circle className="selected"></Circle>
+            </CustomRadioButton>
+            <RadioText>Regular</RadioText>
+          </RadioLabel>
+          <RadioLabel>
+            <input
+              type="radio"
+              name="verb"
+              value="irregular"
+              onChange={changeCheckbox}
+            />
+            <CustomRadioButton>
+              <Circle className="selected"></Circle>
+            </CustomRadioButton>
+            <RadioText>Irregular</RadioText>
+          </RadioLabel>
+        </RadioWrapper>
+      )}
     </Wrapper>
   );
 };

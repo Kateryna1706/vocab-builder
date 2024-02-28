@@ -3,7 +3,7 @@ import WordsPagination from 'components/WordsPagination/WordsPagination';
 import WordsTable from 'components/WordsTable/WordsTable';
 import { Container, MainBlock } from './DictionaryPage.styled';
 import { useEffect } from 'react';
-import { getCategories } from 'redux/words/wordsOperations';
+import { getCategories, getStatistics, getTasks } from 'redux/words/wordsOperations';
 import { useDispatch } from 'react-redux';
 
 const DictionaryPage = () => {
@@ -11,6 +11,8 @@ const DictionaryPage = () => {
 
   useEffect(() => {
     dispatch(getCategories());
+    dispatch(getStatistics());
+    dispatch(getTasks());
   }, [dispatch]);
 
   return (

@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
 
   gap: 8px;
 
+  @media (max-width: 767px) {
+    padding-bottom: ${props => props.$isVerb && '26px'};
+  }
+
   @media (min-width: 768px) {
     flex-direction: row;
   }
@@ -43,6 +47,8 @@ export const Label = styled.label`
 
     stroke: #121417;
 
+    cursor: pointer;
+
     &:hover,
     &:focus {
       stroke: #85aa9f;
@@ -57,8 +63,6 @@ export const Label = styled.label`
   .category {
     top: 20px;
     right: 14px;
-
-    cursor: pointer;
   }
 
   .categoryInput {
@@ -84,6 +88,10 @@ export const Dropdown = styled.ul`
   top: 48px;
   left: 0;
 
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
   width: 343px;
   max-height: 368px;
   overflow: auto;
@@ -100,6 +108,8 @@ export const DropdownItem = styled.li`
   font-weight: 500;
 
   color: #121417;
+
+  cursor: pointer;
 
   &:hover,
   &:focus {
@@ -122,11 +132,11 @@ export const RadioLabel = styled.label`
     visibility: hidden;
   }
 
-  input:checked ~ div {
+  input:checked + div {
     border: 2px solid #85aa9f;
   }
 
-  input:checked ~ div .selected {
+  input:checked + div .selected {
     visibility: visible;
   }
 `;

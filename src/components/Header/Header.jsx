@@ -48,6 +48,7 @@ const Header = () => {
               srcSet={`${illustration} 1x, ${illustration2} 2x`}
               src={illustration}
               alt="boy and girl reading a book"
+              loading="lazy"
             />
           )}
         </WrapperNavAndBar>
