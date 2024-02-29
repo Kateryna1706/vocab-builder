@@ -4,14 +4,12 @@ import { Form } from 'formik';
 export const FormWrapper = styled(Form)`
   display: flex;
   flex-direction: column;
-
-  .categoryLabel {
-    margin-bottom: ${props => (props.$isVerb ? '8px' : '58px')};
-  }
 `;
 
 export const Label = styled.label`
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   input {
     box-sizing: border-box;
@@ -50,6 +48,63 @@ export const Label = styled.label`
     &:focus {
       stroke: #85aa9f;
     }
+  }
+
+  &.categoryLabel {
+    margin-bottom: ${props => (props.$isVerb ? '8px' : '58px')};
+
+    @media (min-width: 768px) {
+      width: 204px;
+      max-width: 204px;
+
+      margin-bottom: ${props => (props.$isVerb ? '8px' : '70px')};
+    }
+  }
+
+  &.wordLabel {
+    @media (min-width: 768px) {
+      flex-direction: row-reverse;
+      justify-content: start;
+      gap: 32px;
+    }
+  }
+
+  .wordInput {
+    @media (min-width: 768px) {
+      width: 354px;
+      max-width: 354px;
+      height: 56px;
+    }
+  }
+`;
+
+export const MessageError = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1px;
+
+  margin-top: 4px;
+
+  span {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.1rem;
+    color: #d80027;
+  }
+`;
+
+export const MessageSuccess = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1px;
+
+  margin-top: 4px;
+
+  span {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.1rem;
+    color: #3cbf61;
   }
 `;
 
@@ -95,11 +150,22 @@ export const RadioWrapper = styled.div`
   align-items: center;
   gap: 16px;
 
+  height: 18px;
+
   margin-bottom: ${props => (props.$isVerbIrregular ? '8px' : '32px')};
+
+  @media (min-width: 768px) {
+    height: 24px;
+
+    margin-bottom: ${props => (props.$isVerbIrregular ? '8px' : '38px')};
+  }
 `;
 
 export const RadioLabel = styled.label`
   position: relative;
+
+  display: flex;
+  align-items: center;
 
   cursor: pointer;
 
@@ -119,20 +185,25 @@ export const CustomRadioButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  box-sizing: border-box;
+
   width: 18px;
   height: 18px;
   border: 2px solid #fcfcfc;
   border-radius: 50%;
 
   @media (min-width: 768px) {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 `;
 
 export const Circle = styled.div`
-  width: 12px;
-  height: 12px;
+  box-sizing: border-box;
+
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #fcfcfc;
   visibility: hidden;
@@ -151,7 +222,7 @@ export const RadioText = styled.span`
   color: #fcfcfc;
 
   @media (min-width: 768px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 
@@ -160,14 +231,25 @@ export const IrregularText = styled.p`
   font-size: 10px;
   line-height: 12px;
   color: #fcfcfc;
+
+  @media (min-width: 768px) {
+    font-size: 12px;
+    line-height: 14px;
+
+    color: rgba(252, 252, 252, 0.8);
+  }
 `;
 
 export const WrapperTextAndIcon = styled.div`
   display: flex;
   align-items: center;
-  gap: 4.5px;
+  gap: 8px;
 
   margin-bottom: 8px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const TextInput = styled.span`
@@ -175,6 +257,11 @@ export const TextInput = styled.span`
   font-size: 14px;
   font-weight: 500;
   color: #fcfcfc;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -193,7 +280,7 @@ export const ButtonWrapper = styled.div`
     width: 159px;
     height: 48px;
 
-    padding: 12px 63px;
+    /* padding: 12px 63px; */
 
     border: none;
 
@@ -205,13 +292,18 @@ export const ButtonWrapper = styled.div`
     &:focus {
       color: #85aa9f;
     }
+
+    @media (min-width: 768px) {
+      width: 245px;
+      height: 56px;
+    }
   }
 
   .cancel {
     width: 145px;
     height: 48px;
 
-    padding: 12px 45px;
+    /* padding: 12px 45px; */
     border: 1px solid rgba(252, 252, 252, 0.4);
 
     color: #fcfcfc;
@@ -221,6 +313,11 @@ export const ButtonWrapper = styled.div`
     &:focus {
       color: #121417;
       background-color: #fcfcfc;
+    }
+
+    @media (min-width: 768px) {
+      width: 245px;
+      height: 56px;
     }
   }
 `;
@@ -233,4 +330,9 @@ export const Button = styled.button`
   font-size: 16px;
   line-height: 24px;
   font-weight: 700;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 28px;
+  }
 `;

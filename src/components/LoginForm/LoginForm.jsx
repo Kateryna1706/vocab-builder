@@ -44,6 +44,10 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    setVisiblePassword(prevState => !prevState);
+  };
+
   const handleSubmit = async (values, actions) => {
     const { email, password } = values;
 
@@ -77,10 +81,6 @@ const LoginForm = () => {
       });
 
     actions.resetForm();
-  };
-
-  const handleClick = () => {
-    setVisiblePassword(prevState => !prevState);
   };
 
   return (

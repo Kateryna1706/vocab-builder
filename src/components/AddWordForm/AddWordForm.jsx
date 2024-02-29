@@ -8,6 +8,8 @@ import { createWord } from 'redux/words/wordsOperations';
 import { ReactComponent as Vector } from '../Icons/vector.svg';
 import { ReactComponent as Ukrainian } from '../Icons/ukraine.svg';
 import { ReactComponent as English } from '../Icons/united-kingdom.svg';
+import { ReactComponent as Error } from '../Icons/error.svg';
+import { ReactComponent as Success } from '../Icons/success.svg';
 import { changeFilter } from 'redux/words/filterSlice';
 import {
   Button,
@@ -19,6 +21,8 @@ import {
   FormWrapper,
   IrregularText,
   Label,
+  MessageError,
+  MessageSuccess,
   RadioLabel,
   RadioText,
   RadioWrapper,
@@ -28,16 +32,19 @@ import {
 } from './AddWordForm.styled';
 
 const initialValues = {
-  ukrainian: '',
-  english: '',
-  category: '',
+  ua: '',
+  en: '',
 };
 
 const SignupSchema = Yup.object().shape({
-  ukrainian: Yup.string().required('Required'),
-  english: Yup.string().required('Required'),
-  category: Yup.string().required('Required'),
-  verb: Yup.string().required('Required'),
+  // category: Yup.string().required('Required'),
+  verb: Yup.string(),
+  ua: Yup.string()
+    .required('Required')
+    .matches(/^(?![A-Za-z])[А-ЯІЄЇҐґа-яієїʼ\s]+$/u, 'Invalid data'),
+  en: Yup.string()
+    .required('Required')
+    .matches(/\b[A-Za-z'-]+(?:\s+[A-Za-z'-]+)*\b/, 'Invalid data'),
 });
 
 const AddWordForm = ({ closeModal }) => {
@@ -45,23 +52,11 @@ const AddWordForm = ({ closeModal }) => {
   const categories = useSelector(selectCategories);
   const [visibleDropdown, setVisibleDropdown] = useState(false);
   const [category, setCategory] = useState('');
-  const [ukrainian, setUkrainian] = useState('');
-  const [english, setEnglish] = useState('');
   const [isVerb, setIsVerb] = useState(false);
   const [isVerbIrregular, setIsVerbIrregular] = useState(false);
 
   const handleClickDropDown = () => {
     setVisibleDropdown(prevState => !prevState);
-  };
-
-  const handleUkrainianWord = event => {
-    const { value } = event.currentTarget;
-    setUkrainian(value);
-  };
-
-  const handleEnglishWord = event => {
-    const { value } = event.currentTarget;
-    setEnglish(value);
   };
 
   const handleClickCategory = event => {
@@ -79,21 +74,31 @@ const AddWordForm = ({ closeModal }) => {
 
   const handleClickVerb = event => {
     const { value } = event.currentTarget;
-    console.log(value === 'irregular');
     setIsVerbIrregular(value === 'irregular');
   };
 
   const handleSubmit = (values, actions) => {
-    const { category, verb, ukrainian, english } = values;
-    console.log(verb === 'irregular');
+    const { verb, ua, en } = values;
 
-    const isIrregular = verb === 'irregular';
-    const newWord = {
-      ukrainian,
-      english,
-      category,
-      isIrregular,
-    };
+    let newWord = null;
+
+    if (isVerb) {
+      const isIrregular = verb === 'irregular';
+      newWord = {
+        ua,
+        en,
+        category,
+        isIrregular,
+      };
+    }
+
+    if (!isVerb) {
+      newWord = {
+        ua,
+        en,
+        category,
+      };
+    }
 
     dispatch(createWord(newWord))
       .then(data => {
@@ -121,104 +126,152 @@ const AddWordForm = ({ closeModal }) => {
     actions.resetForm();
     closeModal();
   };
+
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={SignupSchema}
-      onSubmit={handleSubmit}
-    >
-      {({ errors, touched }) => (
-        <FormWrapper>
-          <Label className="categoryLabel" $isVerb={isVerb}>
-            <Vector onClick={handleClickDropDown} className="vector" />
-            <Field
-              type="text"
-              name="category"
-              value={category}
-              disabled
-              className="category"
-              onChange={handleCategoryFilterChange}
-            />
-            {visibleDropdown && (
-              <Dropdown>
-                {categories.map((item, index) => (
-                  <DropdownItem key={index} onClick={handleClickCategory}>
-                    {item}
-                  </DropdownItem>
-                ))}
-              </Dropdown>
+    <div>
+      <Label className="categoryLabel" $isVerb={isVerb}>
+        <Vector onClick={handleClickDropDown} className="vector" />
+        <input
+          type="text"
+          name="category"
+          value={category}
+          disabled
+          className="categoryInput"
+          onChange={handleCategoryFilterChange}
+        />
+        {visibleDropdown && (
+          <Dropdown>
+            {categories.map((item, index) => (
+              <DropdownItem key={index} onClick={handleClickCategory}>
+                {item}
+              </DropdownItem>
+            ))}
+          </Dropdown>
+        )}
+      </Label>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={SignupSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, touched, resetForm }) => (
+          <FormWrapper>
+            {isVerb && (
+              <RadioWrapper $isVerbIrregular={isVerbIrregular}>
+                <RadioLabel>
+                  <Field
+                    type="radio"
+                    name="verb"
+                    value="regular"
+                    onClick={handleClickVerb}
+                  />
+                  <CustomRadioButton>
+                    <Circle className="selected"></Circle>
+                  </CustomRadioButton>
+                  <RadioText>Regular</RadioText>
+                </RadioLabel>
+                <RadioLabel>
+                  <Field
+                    type="radio"
+                    name="verb"
+                    value="irregular"
+                    onClick={handleClickVerb}
+                  />
+                  <CustomRadioButton>
+                    <Circle className="selected"></Circle>
+                  </CustomRadioButton>
+                  <RadioText>Irregular</RadioText>
+                </RadioLabel>
+              </RadioWrapper>
             )}
-          </Label>
-          {isVerb && (
-            <RadioWrapper $isVerbIrregular={isVerbIrregular}>
-              <RadioLabel>
-                <Field
-                  type="radio"
-                  name="verb"
-                  value="regular"
-                  onClick={handleClickVerb}
-                />
-                <CustomRadioButton>
-                  <Circle className="selected"></Circle>
-                </CustomRadioButton>
-                <RadioText>Regular</RadioText>
-              </RadioLabel>
-              <RadioLabel>
-                <Field
-                  type="radio"
-                  name="verb"
-                  value="irregular"
-                  onClick={handleClickVerb}
-                />
-                <CustomRadioButton>
-                  <Circle className="selected"></Circle>
-                </CustomRadioButton>
-                <RadioText>Irregular</RadioText>
-              </RadioLabel>
-            </RadioWrapper>
-          )}
-          {isVerbIrregular && isVerb && (
-            <IrregularText>
-              Such data must be entered in the format I form-II form-III form.
-            </IrregularText>
-          )}
-          <Wrapper>
-            <Label>
-              <WrapperTextAndIcon>
-                <Ukrainian />
-                <TextInput>Ukrainian</TextInput>
-              </WrapperTextAndIcon>
-              <Field
-                type="text"
-                name="ukrainian"
-                value={ukrainian}
-                onChange={handleUkrainianWord}
-              />
-            </Label>
-            <Label>
-              <WrapperTextAndIcon>
-                <English />
-                <TextInput>English</TextInput>
-              </WrapperTextAndIcon>
-              <Field
-                type="text"
-                name="english"
-                value={english}
-                onChange={handleEnglishWord}
-              />
-            </Label>
-          </Wrapper>
-          <ButtonWrapper>
-            <Button type="submit" className="add">
-              Add
-            </Button>
-            <Button type="button" className="cancel">
-              Cancel
-            </Button>
-          </ButtonWrapper>
-        </FormWrapper>
-      )}
-    </Formik>
+            {isVerbIrregular && isVerb && (
+              <IrregularText>
+                Such data must be entered in the format I form-II form-III form.
+              </IrregularText>
+            )}
+            <Wrapper>
+              <Label className="wordLabel">
+                <WrapperTextAndIcon>
+                  <Ukrainian />
+                  <TextInput>Ukrainian</TextInput>
+                </WrapperTextAndIcon>
+                <div>
+                  <Field
+                    type="text"
+                    name="ua"
+                    style={{
+                      borderColor:
+                        (touched.ua && errors.ua && '#d80027') ||
+                        (touched.ua && !errors.ua && '#3cbf61'),
+                    }}
+                    className="wordInput"
+                  />
+                  {errors.ua && touched.ua && (
+                    <MessageError>
+                      <Error />
+                      <span>{errors.ua}</span>
+                    </MessageError>
+                  )}
+                  {!errors.ua && touched.ua && (
+                    <MessageSuccess>
+                      <Success />
+                      <span>Valid data</span>
+                    </MessageSuccess>
+                  )}
+                </div>
+              </Label>
+              <Label className="wordLabel">
+                <WrapperTextAndIcon>
+                  <English />
+                  <TextInput>English</TextInput>
+                </WrapperTextAndIcon>
+                <div>
+                  <Field
+                    type="text"
+                    name="en"
+                    style={{
+                      borderColor:
+                        (touched.en && errors.en && '#d80027') ||
+                        (touched.en && !errors.en && '#3cbf61'),
+                    }}
+                    className="wordInput"
+                  />
+                  {errors.en && touched.en && (
+                    <MessageError>
+                      <Error />
+                      <span>{errors.en}</span>
+                    </MessageError>
+                  )}
+                  {!errors.en && touched.en && (
+                    <MessageSuccess>
+                      <Success />
+                      <span>Valid data</span>
+                    </MessageSuccess>
+                  )}
+                </div>
+              </Label>
+            </Wrapper>
+            <ButtonWrapper>
+              <Button type="submit" className="add">
+                Add
+              </Button>
+              <Button
+                type="button"
+                className="cancel"
+                onClick={() => {
+                  resetForm();
+                  setCategory('');
+                  setIsVerb(false);
+                  setIsVerbIrregular(false);
+                }}
+              >
+                Cancel
+              </Button>
+            </ButtonWrapper>
+          </FormWrapper>
+        )}
+      </Formik>
+    </div>
   );
 };
 

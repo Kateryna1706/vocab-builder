@@ -26,6 +26,7 @@ export const ModalWindow = styled.div`
   @media (min-width: 768px) {
     width: 628px;
     padding: 48px 64px;
+    border-radius: 30px;
   }
 `;
 
@@ -39,5 +40,10 @@ export const CrossClose = styled(Close)`
 
   &:hover {
     stroke: #f4c550;
+  }
+
+  @media (min-width: 768px) {
+    top: 20px;
+    right: 20px;
   }
 `;
