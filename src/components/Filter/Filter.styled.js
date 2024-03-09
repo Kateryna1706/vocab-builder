@@ -99,6 +99,10 @@ export const Dropdown = styled.ul`
   border-radius: 15px;
 
   background-color: #ffffff;
+
+  @media (min-width: 768px) {
+    width: 164px;
+  }
 `;
 
 export const DropdownItem = styled.li`

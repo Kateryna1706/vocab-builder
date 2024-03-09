@@ -10,7 +10,7 @@ const AddWordModal = ({ closeModal }) => {
         Adding a new word to the dictionary is an important step in enriching
         the language base and expanding the vocabulary.
       </Text>
-      <AddWordForm />
+      <AddWordForm closeModal={closeModal} />
     </Modal>
   );
 };

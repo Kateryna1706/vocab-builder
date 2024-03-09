@@ -5,9 +5,38 @@ axios.defaults.baseURL = 'https://vocab-builder-backend.p.goit.global/api';
 
 export const fetchOtherWords = createAsyncThunk(
   'words/fetchAll',
-  async (_, thunkAPI) => {
+  async (parameters, thunkAPI) => {
+    const { keywords, category, isIrregular, page, limit } = parameters;
+
     try {
-      const response = await axios.get('/words/all');
+      let response = null;
+      if (!keywords && !category && isIrregular === '') {
+        response = await axios.get(`/words/all?page=${page}&limit=${limit}`);
+      }
+
+      if (keywords && category && isIrregular !== '') {
+        response = await axios.get(
+          `/words/all?keywords=${keywords}&category=${category}&isIrregular=${isIrregular}&page=${page}&limit=${limit}`
+        );
+      }
+
+      if (!keywords && category && isIrregular !== '') {
+        response = await axios.get(
+          `/words/all?category=${category}&isIrregular=${isIrregular}&page=${page}&limit=${limit}`
+        );
+      }
+
+      if (!keywords && category && isIrregular === '') {
+        response = await axios.get(
+          `/words/all?category=${category}&page=${page}&limit=${limit}`
+        );
+      }
+
+      if (keywords && !category && isIrregular === '') {
+        response = await axios.get(
+          `/words/all?keywords=${keywords}&page=${page}&limit=${limit}`
+        );
+      }
       return response.data.results;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -19,10 +48,36 @@ export const fetchOwnWords = createAsyncThunk(
   'words/fetchOwnWords',
   async (parameters, thunkAPI) => {
     const { keywords, category, isIrregular, page, limit } = parameters;
+
     try {
-      const response = await axios.get(
-        `/words/own?keywords=${keywords}&category=${category}&isIrregular=${isIrregular}&page=${page}&limit=${limit}`
-      );
+      let response = null;
+      if (!keywords && !category && isIrregular === '') {
+        response = await axios.get(`/words/own?page=${page}&limit=${limit}`);
+      }
+
+      if (keywords && category && isIrregular !== '') {
+        response = await axios.get(
+          `/words/own?keywords=${keywords}&category=${category}&isIrregular=${isIrregular}&page=${page}&limit=${limit}`
+        );
+      }
+
+      if (!keywords && category && isIrregular !== '') {
+        response = await axios.get(
+          `/words/own?category=${category}&isIrregular=${isIrregular}&page=${page}&limit=${limit}`
+        );
+      }
+
+      if (!keywords && category && isIrregular === '') {
+        response = await axios.get(
+          `/words/own?category=${category}&page=${page}&limit=${limit}`
+        );
+      }
+
+      if (keywords && !category && isIrregular === '') {
+        response = await axios.get(
+          `/words/own?keywords=${keywords}&page=${page}&limit=${limit}`
+        );
+      }
       return response.data.results;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -56,11 +111,11 @@ export const addWord = createAsyncThunk(
   }
 );
 
-export const aditWord = createAsyncThunk(
-  'words/aditWord',
+export const editWord = createAsyncThunk(
+  'words/editWord',
   async (word, thunkAPI) => {
     try {
-      const response = await axios.patch(`/words/adit/${word.id}`, word.data);
+      const response = await axios.patch(`/words/edit/${word.id}`, word.data);
 
       return { id: word.id, data: response.data };
     } catch (error) {

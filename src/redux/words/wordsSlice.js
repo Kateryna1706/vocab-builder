@@ -5,7 +5,7 @@ import {
   fetchOwnWords,
   createWord,
   addWord,
-  aditWord,
+  editWord,
   deleteWord,
   getCategories,
   getStatistics,
@@ -83,10 +83,10 @@ const wordsSlice = createSlice({
       .addCase(addWord.rejected, (state, action) => {
         handleRejected(state, action);
       })
-      .addCase(aditWord.pending, (state, action) => {
+      .addCase(editWord.pending, (state, action) => {
         handlePending(state);
       })
-      .addCase(aditWord.fulfilled, (state, action) => {
+      .addCase(editWord.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.ownWords.findIndex(
@@ -94,7 +94,7 @@ const wordsSlice = createSlice({
         );
         state.ownWords.splice(index, 1, action.payload.data);
       })
-      .addCase(aditWord.rejected, (state, action) => {
+      .addCase(editWord.rejected, (state, action) => {
         handleRejected(state, action);
       })
       .addCase(deleteWord.pending, (state, action) => {

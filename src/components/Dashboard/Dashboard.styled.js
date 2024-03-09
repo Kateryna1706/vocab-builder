@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
+  margin-bottom: 32px;
   @media (min-width: 1440px) {
     display: flex;
     justify-content: space-between;

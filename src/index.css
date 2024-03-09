@@ -39,3 +39,7 @@ img {
 button {
   cursor: pointer;
 }
+
+.hidden {
+  overflow: hidden;
+}

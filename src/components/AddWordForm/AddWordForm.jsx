@@ -37,7 +37,6 @@ const initialValues = {
 };
 
 const SignupSchema = Yup.object().shape({
-  // category: Yup.string().required('Required'),
   verb: Yup.string(),
   ua: Yup.string()
     .required('Required')
@@ -118,13 +117,13 @@ const AddWordForm = ({ closeModal }) => {
         }
 
         Notify.success(`New word added successfully.`);
+        closeModal();
       })
       .catch(error => {
         Notify.failure(error);
       });
 
     actions.resetForm();
-    closeModal();
   };
 
   return (

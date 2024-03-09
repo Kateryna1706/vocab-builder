@@ -15,17 +15,19 @@ import { ReactComponent as Search } from '../Icons/search.svg';
 import { ReactComponent as Vector } from '../Icons/vector.svg';
 import { useEffect, useState } from 'react';
 import { selectCategories } from 'redux/words/wordsSelectors';
-import { fetchOwnWords } from 'redux/words/wordsOperations';
+import { fetchOtherWords, fetchOwnWords } from 'redux/words/wordsOperations';
+import { useLocation } from 'react-router-dom';
 
 export const Filter = () => {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
   const categories = useSelector(selectCategories);
   const [visibleDropdown, setVisibleDropdown] = useState(false);
   const [category, setCategory] = useState('');
   const [keywords, setKeywords] = useState('');
   const [isVerb, setIsVerb] = useState(false);
   const [debouncedKeywords, setDebouncedKeywords] = useState('');
-  const [isIrregular, setIsIrregular] = useState(false);
+  const [isIrregular, setIsIrregular] = useState('');
   const [page, setPage] = useState(1);
   const limit = 7;
 
@@ -77,6 +79,30 @@ export const Filter = () => {
 
     return () => clearTimeout(timeoutId);
   }, [keywords]);
+
+  useEffect(() => {
+    if (pathname === '/recommend') {
+      dispatch(
+        fetchOtherWords({
+          keywords: debouncedKeywords,
+          category,
+          isIrregular,
+          page,
+          limit,
+        })
+      );
+    } else {
+      dispatch(
+        fetchOwnWords({
+          keywords: debouncedKeywords,
+          category,
+          isIrregular,
+          page,
+          limit,
+        })
+      );
+    }
+  }, [category, debouncedKeywords, dispatch, isIrregular, page, pathname]);
 
   return (
     <Wrapper $isVerb={!isVerb}>
