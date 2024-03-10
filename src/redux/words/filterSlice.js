@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const filterInitialState = {
-  keywords: '',
-  category: '',
+  page: 1,
 };
 
 const filterSlice = createSlice({
@@ -10,7 +9,7 @@ const filterSlice = createSlice({
   initialState: filterInitialState,
   reducers: {
     changeFilter(state, action) {
-      state = action.payload;
+      state.page = action.payload;
     },
   },
 });

@@ -37,7 +37,7 @@ export const fetchOtherWords = createAsyncThunk(
           `/words/all?keywords=${keywords}&page=${page}&limit=${limit}`
         );
       }
-      return response.data.results;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -78,7 +78,7 @@ export const fetchOwnWords = createAsyncThunk(
           `/words/own?keywords=${keywords}&page=${page}&limit=${limit}`
         );
       }
-      return response.data.results;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

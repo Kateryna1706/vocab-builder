@@ -32,7 +32,7 @@ import { CircularProgress } from '@mui/joy';
 const WordsTable = ({ data }) => {
   const dispatch = useDispatch();
   const { isTablet, isDesktop } = useAdaptive();
-  const rerender = useReducer(() => ({}), {})[1];
+  // const rerender = useReducer(() => ({}), {})[1];
   const { pathname } = useLocation();
   const columnHelper = createColumnHelper();
   const [contextMenuId, setContextMenuId] = useState('');
@@ -267,9 +267,6 @@ const WordsTable = ({ data }) => {
       {isModalOpen && (
         <EditWordModal dataModal={dataModal} closeModal={closeModal} />
       )}
-      <button onClick={() => rerender()} className="border">
-        Rerender
-      </button>
     </TableContainer>
   );
 };

@@ -3,7 +3,10 @@ import WordsPagination from 'components/WordsPagination/WordsPagination';
 import WordsTable from 'components/WordsTable/WordsTable';
 import { Container, MainBlock } from './RecommendPage.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectOtherUsersWords } from 'redux/words/wordsSelectors';
+import {
+  selectOtherUsersWords,
+  selectTotalPagesOther,
+} from 'redux/words/wordsSelectors';
 import { useEffect } from 'react';
 import {
   getCategories,
@@ -14,6 +17,7 @@ import {
 const RecommendPage = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectOtherUsersWords);
+  const totalPages = useSelector(selectTotalPagesOther);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -26,7 +30,7 @@ const RecommendPage = () => {
       <Container>
         <Dashboard></Dashboard>
         <WordsTable data={data}></WordsTable>
-        <WordsPagination></WordsPagination>
+        <WordsPagination totalPages={totalPages}></WordsPagination>
       </Container>
     </MainBlock>
   );

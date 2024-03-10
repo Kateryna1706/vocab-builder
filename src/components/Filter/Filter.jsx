@@ -10,13 +10,13 @@ import {
   RadioWrapper,
   Wrapper,
 } from './Filter.styled';
-import { changeFilter } from 'redux/words/filterSlice';
 import { ReactComponent as Search } from '../Icons/search.svg';
 import { ReactComponent as Vector } from '../Icons/vector.svg';
 import { useEffect, useState } from 'react';
-import { selectCategories } from 'redux/words/wordsSelectors';
+import { selectCategories, selectFilter } from 'redux/words/wordsSelectors';
 import { fetchOtherWords, fetchOwnWords } from 'redux/words/wordsOperations';
 import { useLocation } from 'react-router-dom';
+import { changeFilter } from 'redux/words/filterSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -28,8 +28,11 @@ export const Filter = () => {
   const [isVerb, setIsVerb] = useState(false);
   const [debouncedKeywords, setDebouncedKeywords] = useState('');
   const [isIrregular, setIsIrregular] = useState('');
-  const [page, setPage] = useState(1);
+
+  const { page } = useSelector(selectFilter);
   const limit = 7;
+
+  console.log(page);
 
   const handleWordFilterChange = event => {
     const { value } = event.currentTarget;
@@ -42,7 +45,6 @@ export const Filter = () => {
   };
 
   const handleClickSearch = () => {
-    dispatch(changeFilter({ keywords }));
     dispatch(
       fetchOwnWords({
         keywords: debouncedKeywords,
@@ -62,7 +64,6 @@ export const Filter = () => {
     const value = event.currentTarget.innerHTML;
     setCategory(value);
     setIsVerb(value === 'verb');
-    dispatch(changeFilter({ category: value }));
     setVisibleDropdown(prevState => !prevState);
   };
 
@@ -73,7 +74,6 @@ export const Filter = () => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      console.log('timeout');
       setDebouncedKeywords(keywords);
     }, 300);
 
@@ -103,6 +103,10 @@ export const Filter = () => {
       );
     }
   }, [category, debouncedKeywords, dispatch, isIrregular, page, pathname]);
+
+  useEffect(() => {
+    dispatch(changeFilter(1));
+  }, [dispatch, pathname]);
 
   return (
     <Wrapper $isVerb={!isVerb}>

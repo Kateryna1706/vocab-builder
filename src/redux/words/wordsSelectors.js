@@ -15,3 +15,7 @@ export const selectIsLoading = state => state.words.isLoading;
 export const selectError = state => state.words.error;
 
 export const selectFilter = state => state.filter;
+
+export const selectTotalPagesOwn = state => state.words.totalPagesOwn;
+
+export const selectTotalPagesOther = state => state.words.totalPagesOther;

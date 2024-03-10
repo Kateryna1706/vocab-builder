@@ -22,6 +22,8 @@ const wordsInitialState = {
   answers: [],
   isLoading: false,
   error: null,
+  totalPagesOwn: 1,
+  totalPagesOther: 1,
 };
 
 const handlePending = state => {
@@ -45,7 +47,8 @@ const wordsSlice = createSlice({
       .addCase(fetchOwnWords.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.ownWords = action.payload;
+        state.ownWords = action.payload.results;
+        state.totalPagesOwn = action.payload.totalPages;
       })
       .addCase(fetchOwnWords.rejected, (state, action) => {
         handleRejected(state, action);
@@ -56,7 +59,8 @@ const wordsSlice = createSlice({
       .addCase(fetchOtherWords.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.otherWords = action.payload;
+        state.otherWords = action.payload.results;
+        state.totalPagesOther = action.payload.totalPages;
       })
       .addCase(fetchOtherWords.rejected, (state, action) => {
         handleRejected(state, action);

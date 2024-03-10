@@ -9,11 +9,15 @@ import {
   getTasks,
 } from 'redux/words/wordsOperations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectOwnWords } from 'redux/words/wordsSelectors';
+import {
+  selectOwnWords,
+  selectTotalPagesOwn,
+} from 'redux/words/wordsSelectors';
 
 const DictionaryPage = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectOwnWords);
+  const totalPages = useSelector(selectTotalPagesOwn);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -26,7 +30,7 @@ const DictionaryPage = () => {
       <Container>
         <Dashboard></Dashboard>
         <WordsTable data={data}></WordsTable>
-        <WordsPagination></WordsPagination>
+        <WordsPagination totalPages={totalPages}></WordsPagination>
       </Container>
     </MainBlock>
   );
