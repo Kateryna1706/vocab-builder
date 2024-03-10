@@ -5,7 +5,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import { useDispatch } from 'react-redux';
-import { useMemo, useReducer, useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   ContextMenu,
   ContextMenuItem,
