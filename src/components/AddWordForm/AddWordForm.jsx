@@ -4,7 +4,7 @@ import { Notify } from 'notiflix';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { selectCategories } from 'redux/words/wordsSelectors';
-import { createWord } from 'redux/words/wordsOperations';
+import { createWord, getStatistics } from 'redux/words/wordsOperations';
 import { ReactComponent as Vector } from '../Icons/vector.svg';
 import { ReactComponent as Ukrainian } from '../Icons/ukraine.svg';
 import { ReactComponent as English } from '../Icons/united-kingdom.svg';
@@ -118,6 +118,7 @@ const AddWordForm = ({ closeModal }) => {
 
         Notify.success(`New word added successfully.`);
         closeModal();
+        dispatch(getStatistics());
       })
       .catch(error => {
         Notify.failure(error);

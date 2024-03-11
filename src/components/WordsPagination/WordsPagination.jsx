@@ -1,12 +1,14 @@
 import { Pagination } from '@mui/material';
 import { Wrapper } from './WordsPagination.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeFilter } from 'redux/words/filterSlice';
 import { useAdaptive } from 'hooks/useAdaptive';
+import { selectFilter } from 'redux/words/wordsSelectors';
 
 const WordsPagination = ({ totalPages }) => {
   const dispatch = useDispatch();
   const { isMobile } = useAdaptive();
+  const { page } = useSelector(selectFilter);
 
   return (
     <Wrapper>
@@ -22,6 +24,7 @@ const WordsPagination = ({ totalPages }) => {
         onChange={(event, page) => {
           dispatch(changeFilter(page));
         }}
+        page={page}
         sx={{
           color: '#121417',
           '.MuiButtonBase-root.MuiPaginationItem-root.Mui-selected': {

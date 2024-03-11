@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <ContainerHeader>
       <Container>
-        <Logo></Logo>
+        <Logo />
         <WrapperNavAndBar $burgerMenu={menuIsOpen}>
           <WrapperNavBarIcon $burgerMenu={menuIsOpen}>
             {menuIsOpen || isDesktop ? (
