@@ -1,8 +1,9 @@
 import Logo from 'components/Logo/Logo';
 import RegisterForm from 'components/RegisterForm/RegisterForm';
+import { Container, List, Position, Wrapper } from './RegisterPage.styled';
+
 import illustration from '../../image/illustration.webp';
 import illustration2 from '../../image/illustration@2x.webp';
-import { Container, List, Position, Wrapper } from './RegisterPage.styled';
 
 const RegisterPage = () => {
   return (

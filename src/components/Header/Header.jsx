@@ -1,8 +1,7 @@
 import Logo from 'components/Logo/Logo';
 import UserBar from 'components/UserBar/UserBar';
 import UserNav from 'components/UserNav/UserNav';
-import { useState } from 'react';
-import { ReactComponent as Menu } from '../Icons/Nav.svg';
+
 import {
   Container,
   ContainerHeader,
@@ -10,10 +9,15 @@ import {
   WrapperNavAndBar,
   WrapperNavBarIcon,
 } from './Header.styled';
-import { ReactComponent as Cross } from '../Icons/cross.svg';
+
+import { useState } from 'react';
+import { useAdaptive } from '../../hooks/useAdaptive';
+
 import illustration from '../../image/illustration-menu.webp';
 import illustration2 from '../../image/illustration-menu@2x.webp';
-import { useAdaptive } from '../../hooks/useAdaptive';
+
+import { ReactComponent as Menu } from '../Icons/Nav.svg';
+import { ReactComponent as Cross } from '../Icons/cross.svg';
 
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -26,7 +30,7 @@ const Header = () => {
   return (
     <ContainerHeader>
       <Container>
-        <Logo></Logo>
+        <Logo />
         <WrapperNavAndBar $burgerMenu={menuIsOpen}>
           <WrapperNavBarIcon $burgerMenu={menuIsOpen}>
             {menuIsOpen || isDesktop ? (

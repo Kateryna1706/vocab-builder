@@ -1,16 +1,3 @@
-import { Field, Formik } from 'formik';
-import * as Yup from 'yup';
-import { Notify } from 'notiflix';
-import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import { selectCategories } from 'redux/words/wordsSelectors';
-import { createWord } from 'redux/words/wordsOperations';
-import { ReactComponent as Vector } from '../Icons/vector.svg';
-import { ReactComponent as Ukrainian } from '../Icons/ukraine.svg';
-import { ReactComponent as English } from '../Icons/united-kingdom.svg';
-import { ReactComponent as Error } from '../Icons/error.svg';
-import { ReactComponent as Success } from '../Icons/success.svg';
-import { changeFilter } from 'redux/words/filterSlice';
 import {
   Button,
   ButtonWrapper,
@@ -31,6 +18,23 @@ import {
   WrapperTextAndIcon,
 } from './AddWordForm.styled';
 
+import { selectCategories } from 'redux/words/wordsSelectors';
+import { createWord, getStatistics } from 'redux/words/wordsOperations';
+import { changeFilter } from 'redux/words/filterSlice';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+
+import { Field, Formik } from 'formik';
+import * as Yup from 'yup';
+import { Notify } from 'notiflix';
+
+import { ReactComponent as Vector } from '../Icons/vector.svg';
+import { ReactComponent as Ukrainian } from '../Icons/ukraine.svg';
+import { ReactComponent as English } from '../Icons/united-kingdom.svg';
+import { ReactComponent as Error } from '../Icons/error.svg';
+import { ReactComponent as Success } from '../Icons/success.svg';
+
 const initialValues = {
   ua: '',
   en: '',
@@ -47,12 +51,13 @@ const SignupSchema = Yup.object().shape({
 });
 
 const AddWordForm = ({ closeModal }) => {
-  const dispatch = useDispatch();
-  const categories = useSelector(selectCategories);
   const [visibleDropdown, setVisibleDropdown] = useState(false);
   const [category, setCategory] = useState('');
   const [isVerb, setIsVerb] = useState(false);
   const [isVerbIrregular, setIsVerbIrregular] = useState(false);
+
+  const dispatch = useDispatch();
+  const categories = useSelector(selectCategories);
 
   const handleClickDropDown = () => {
     setVisibleDropdown(prevState => !prevState);
@@ -118,6 +123,7 @@ const AddWordForm = ({ closeModal }) => {
 
         Notify.success(`New word added successfully.`);
         closeModal();
+        dispatch(getStatistics());
       })
       .catch(error => {
         Notify.failure(error);

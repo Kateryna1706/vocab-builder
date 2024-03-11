@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
 import { Backdrop, CrossClose, ModalWindow } from './Modal.styled';
+import { useEffect } from 'react';
 
 const Modal = ({ children, closeModal }) => {
-    
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {

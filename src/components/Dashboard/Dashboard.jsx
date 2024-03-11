@@ -1,4 +1,5 @@
 import { Filter } from 'components/Filter/Filter';
+import AddWordModal from 'components/AddWordModal/AddWordModal';
 import {
   AddWordBtn,
   ButtonWrapper,
@@ -7,17 +8,21 @@ import {
   Statistics,
   Wrapper,
 } from './Dashboard.styled';
-import { ReactComponent as PlusAdd } from '../Icons/plus-add.svg';
-import { ReactComponent as Switch } from '../Icons/switch-horizontal.svg';
+
 import { useSelector } from 'react-redux';
 import { selectStatistics } from 'redux/words/wordsSelectors';
+
 import { useState } from 'react';
-import AddWordModal from 'components/AddWordModal/AddWordModal';
+import { useLocation } from 'react-router-dom';
+
+import { ReactComponent as PlusAdd } from '../Icons/plus-add.svg';
+import { ReactComponent as Switch } from '../Icons/switch-horizontal.svg';
 
 const Dashboard = () => {
-  const statistics = useSelector(selectStatistics);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { pathname } = useLocation();
+  const statistics = useSelector(selectStatistics);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -38,9 +43,11 @@ const Dashboard = () => {
           To study: <span>{statistics}</span>
         </Statistics>
         <ButtonWrapper>
-          <AddWordBtn type="button" onClick={openModal}>
-            Add word <PlusAdd />
-          </AddWordBtn>
+          {pathname !== '/recommend' && (
+            <AddWordBtn type="button" onClick={openModal}>
+              Add word <PlusAdd />
+            </AddWordBtn>
+          )}
           <Link to="/training">
             Train oneself <Switch />
           </Link>

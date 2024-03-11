@@ -1,13 +1,3 @@
-import { Field, Formik } from 'formik';
-import * as Yup from 'yup';
-import { Notify } from 'notiflix';
-import { useDispatch } from 'react-redux';
-import { editWord } from 'redux/words/wordsOperations';
-import { ReactComponent as Ukrainian } from '../Icons/ukraine.svg';
-import { ReactComponent as English } from '../Icons/united-kingdom.svg';
-import { ReactComponent as Error } from '../Icons/error.svg';
-import { ReactComponent as Success } from '../Icons/success.svg';
-
 import {
   Button,
   ButtonWrapper,
@@ -19,6 +9,19 @@ import {
   Wrapper,
   WrapperTextAndIcon,
 } from './EditWordForm.styled';
+
+import { editWord } from 'redux/words/wordsOperations';
+
+import { useDispatch } from 'react-redux';
+
+import { Field, Formik } from 'formik';
+import * as Yup from 'yup';
+import { Notify } from 'notiflix';
+
+import { ReactComponent as Ukrainian } from '../Icons/ukraine.svg';
+import { ReactComponent as English } from '../Icons/united-kingdom.svg';
+import { ReactComponent as Error } from '../Icons/error.svg';
+import { ReactComponent as Success } from '../Icons/success.svg';
 
 const SignupSchema = Yup.object().shape({
   ua: Yup.string()

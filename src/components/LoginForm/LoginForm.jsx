@@ -1,15 +1,3 @@
-import { Formik, Field } from 'formik';
-import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { Notify } from 'notiflix';
-
-import { useState } from 'react';
-import { logIn } from 'redux/auth/authOperations';
-import { Link, useNavigate } from 'react-router-dom';
-import { ReactComponent as EyeOf } from '../Icons/eye-off.svg';
-import { ReactComponent as Eye } from '../Icons/eye.svg';
-import { ReactComponent as Error } from '../Icons/error.svg';
-import { ReactComponent as Success } from '../Icons/success.svg';
 import {
   Button,
   FormContainer,
@@ -22,21 +10,40 @@ import {
   Wrapper,
 } from './LoginForm.styled';
 
+import { logIn } from 'redux/auth/authOperations';
+
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { Formik, Field } from 'formik';
+import * as Yup from 'yup';
+import { Notify } from 'notiflix';
+
+import { ReactComponent as EyeOf } from '../Icons/eye-off.svg';
+import { ReactComponent as Eye } from '../Icons/eye.svg';
+import { ReactComponent as Error } from '../Icons/error.svg';
+import { ReactComponent as Success } from '../Icons/success.svg';
+
 const initialValues = {
   email: '',
   password: '',
 };
 
+const matchPassword = /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/;
+
+const matchEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email')
     .required('Required')
-    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Error email'),
+    .matches(matchEmail, 'Error email'),
   password: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required')
-    .matches(/^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/, 'Error password'),
+    .matches(matchPassword, 'Error password'),
 });
 
 const LoginForm = () => {

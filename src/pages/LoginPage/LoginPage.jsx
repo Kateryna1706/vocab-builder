@@ -1,8 +1,10 @@
 import Logo from 'components/Logo/Logo';
+import LoginForm from 'components/LoginForm/LoginForm';
+
+import { Container, List, Position, Wrapper } from './LoginPage.styled';
+
 import illustration from '../../image/illustration.webp';
 import illustration2 from '../../image/illustration@2x.webp';
-import { Container, List, Position, Wrapper } from './LoginPage.styled';
-import LoginForm from 'components/LoginForm/LoginForm';
 
 const LoginPage = () => {
   return (

@@ -1,6 +1,6 @@
+import { Container, Wrapper } from './Logo.styled';
 import { useLocation } from 'react-router-dom';
 import logo from '../../image/logo.jpg';
-import { Container, Wrapper } from './Logo.styled';
 
 const Logo = () => {
   const location = useLocation();

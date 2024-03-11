@@ -1,14 +1,21 @@
-import { NavLink } from 'react-router-dom';
 import { ListNav, ListNavItem } from './UserNav.styled';
+import { changeFilter } from 'redux/words/filterSlice';
+
+import { useDispatch } from 'react-redux';
 import { useAdaptive } from 'hooks/useAdaptive';
 
+import { NavLink } from 'react-router-dom';
+
 const UserNav = ({ closeMenu }) => {
+  const dispatch = useDispatch();
   const { isDesktop } = useAdaptive();
 
   const handleClickNavItem = () => {
     if (isDesktop) {
       return;
     }
+
+    dispatch(changeFilter(1));
     closeMenu();
   };
 
