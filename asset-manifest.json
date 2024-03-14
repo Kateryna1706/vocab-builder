@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/vocab-builder/static/css/main.99e21df0.css",
-    "main.js": "/vocab-builder/static/js/main.b3db737e.js",
+    "main.js": "/vocab-builder/static/js/main.9c35ab64.js",
     "static/js/606.9b41cefb.chunk.js": "/vocab-builder/static/js/606.9b41cefb.chunk.js",
     "static/js/312.ebb163aa.chunk.js": "/vocab-builder/static/js/312.ebb163aa.chunk.js",
     "static/js/209.32b166fb.chunk.js": "/vocab-builder/static/js/209.32b166fb.chunk.js",
     "static/js/287.f4d5f148.chunk.js": "/vocab-builder/static/js/287.f4d5f148.chunk.js",
-    "static/js/592.48320291.chunk.js": "/vocab-builder/static/js/592.48320291.chunk.js",
+    "static/js/928.d1099d83.chunk.js": "/vocab-builder/static/js/928.d1099d83.chunk.js",
     "static/js/306.a033ebd5.chunk.js": "/vocab-builder/static/js/306.a033ebd5.chunk.js",
     "static/js/650.b515a228.chunk.js": "/vocab-builder/static/js/650.b515a228.chunk.js",
     "static/js/160.b49444fc.chunk.js": "/vocab-builder/static/js/160.b49444fc.chunk.js",
-    "static/js/46.b87d45dc.chunk.js": "/vocab-builder/static/js/46.b87d45dc.chunk.js",
+    "static/js/46.2e0af21f.chunk.js": "/vocab-builder/static/js/46.2e0af21f.chunk.js",
     "static/media/FixelDisplay-Bold.otf": "/vocab-builder/static/media/FixelDisplay-Bold.fae02f44b65d58c7e2da.otf",
     "static/media/FixelDisplay-SemiBold.otf": "/vocab-builder/static/media/FixelDisplay-SemiBold.9e0a60603899ef85a74f.otf",
     "static/media/FixelDisplay-Medium.otf": "/vocab-builder/static/media/FixelDisplay-Medium.62e7e95bbc3ee92fef32.otf",
@@ -18,7 +18,9 @@
     "static/media/illustration@2x.webp": "/vocab-builder/static/media/illustration@2x.bb8e08daeecd9aaf838f.webp",
     "static/media/illustration-menu@2x.webp": "/vocab-builder/static/media/illustration-menu@2x.95160c695a3fda2b1d84.webp",
     "static/media/illustration.webp": "/vocab-builder/static/media/illustration.49e86480236e393ce148.webp",
+    "static/media/blood-report@2x.webp": "/vocab-builder/static/media/blood-report@2x.65172ba2f7f94de2d99e.webp",
     "static/media/illustration-menu.webp": "/vocab-builder/static/media/illustration-menu.142ec9c8edfcaa456114.webp",
+    "static/media/blood-report.webp": "/vocab-builder/static/media/blood-report.c0d4e9965be5884183bc.webp",
     "static/media/united-kingdom.svg": "/vocab-builder/static/media/united-kingdom.ad8b433e1d7296593979b9bcb93e911c.svg",
     "index.html": "/vocab-builder/index.html",
     "static/media/vector.svg": "/vocab-builder/static/media/vector.b896737ed18301a04f903019c06e8fae.svg",
@@ -37,19 +39,19 @@
     "static/media/Nav.svg": "/vocab-builder/static/media/Nav.a1d19c1ac5bed5ae615c3ee42d2262f6.svg",
     "static/media/cross.svg": "/vocab-builder/static/media/cross.564f255c8df3a91bbc72d8200219338b.svg",
     "main.99e21df0.css.map": "/vocab-builder/static/css/main.99e21df0.css.map",
-    "main.b3db737e.js.map": "/vocab-builder/static/js/main.b3db737e.js.map",
+    "main.9c35ab64.js.map": "/vocab-builder/static/js/main.9c35ab64.js.map",
     "606.9b41cefb.chunk.js.map": "/vocab-builder/static/js/606.9b41cefb.chunk.js.map",
     "312.ebb163aa.chunk.js.map": "/vocab-builder/static/js/312.ebb163aa.chunk.js.map",
     "209.32b166fb.chunk.js.map": "/vocab-builder/static/js/209.32b166fb.chunk.js.map",
     "287.f4d5f148.chunk.js.map": "/vocab-builder/static/js/287.f4d5f148.chunk.js.map",
-    "592.48320291.chunk.js.map": "/vocab-builder/static/js/592.48320291.chunk.js.map",
+    "928.d1099d83.chunk.js.map": "/vocab-builder/static/js/928.d1099d83.chunk.js.map",
     "306.a033ebd5.chunk.js.map": "/vocab-builder/static/js/306.a033ebd5.chunk.js.map",
     "650.b515a228.chunk.js.map": "/vocab-builder/static/js/650.b515a228.chunk.js.map",
     "160.b49444fc.chunk.js.map": "/vocab-builder/static/js/160.b49444fc.chunk.js.map",
-    "46.b87d45dc.chunk.js.map": "/vocab-builder/static/js/46.b87d45dc.chunk.js.map"
+    "46.2e0af21f.chunk.js.map": "/vocab-builder/static/js/46.2e0af21f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.99e21df0.css",
-    "static/js/main.b3db737e.js"
+    "static/js/main.9c35ab64.js"
   ]
 }
