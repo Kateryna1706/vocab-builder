@@ -1,26 +1,42 @@
 import { ProgressWrapper } from './ProgressBar.styled';
+
 import { useAdaptive } from 'hooks/useAdaptive';
+import { useLocation } from 'react-router-dom';
+
 import { CircularProgress } from '@mui/joy';
 
-const ProgressBar = ({ progress }) => {
+const ProgressBar = ({
+  progress,
+  sizeMobile,
+  sizeFromTablet,
+  trackColor,
+  progressColor,
+}) => {
   const { isTablet, isDesktop } = useAdaptive();
+  const { pathname } = useLocation();
 
   return (
     <ProgressWrapper>
-      {(isTablet || isDesktop) && <span className="progress">{progress}</span>}
+      {(isTablet || isDesktop) && pathname !== '/training' && (
+        <span className="progressColumn">{progress}</span>
+      )}
       <CircularProgress
         determinate
         variant="solid"
         value={progress}
         sx={{
           '--CircularProgress-size': `${
-            isTablet || isDesktop ? '32px' : '30px'
+            isTablet || isDesktop ? sizeFromTablet : sizeMobile
           }`,
-          '--CircularProgress-trackThickness': '6px',
-          '--CircularProgress-trackColor': '#D4F8D3',
-          '--CircularProgress-progressColor': '#2BD627',
+          '--CircularProgress-trackThickness': '5px',
+          '--CircularProgress-trackColor': trackColor,
+          '--CircularProgress-progressColor': progressColor,
         }}
-      />
+      >
+        {pathname === '/training' && (
+          <span className="progress">{progress}</span>
+        )}
+      </CircularProgress>
     </ProgressWrapper>
   );
 };

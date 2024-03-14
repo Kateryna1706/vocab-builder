@@ -29,7 +29,15 @@ export const getConfigColumns = openModal => {
       id: 'progress',
       header: 'Progress',
       cell: props => {
-        return <ProgressBar progress={props.row.original.progress} />;
+        return (
+          <ProgressBar
+            progress={props.row.original.progress}
+            sizeMobile="30px"
+            sizeFromTablet="32px"
+            trackColor="#D4F8D3"
+            progressColor="#2BD627"
+          />
+        );
       },
       footer: info => info.column.id,
     }),

@@ -284,8 +284,6 @@ export const ButtonWrapper = styled.div`
     width: 159px;
     height: 48px;
 
-    /* padding: 12px 63px; */
-
     border: none;
 
     color: #121417;
@@ -307,7 +305,6 @@ export const ButtonWrapper = styled.div`
     width: 145px;
     height: 48px;
 
-    /* padding: 12px 45px; */
     border: 1px solid rgba(252, 252, 252, 0.4);
 
     color: #fcfcfc;

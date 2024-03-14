@@ -16,7 +16,13 @@ export const fetchOtherWords = createAsyncThunk(
 
       if (keywords && category && isIrregular !== '') {
         response = await axios.get(
-          `/words/all?keywords=${keywords}&category=${category}&isIrregular=${isIrregular}&page=${page}&limit=${limit}`
+          `/words/all?keyword=${keywords}&category=${category}&isIrregular=${isIrregular}&page=${page}&limit=${limit}`
+        );
+      }
+
+      if (keywords && category && isIrregular === '') {
+        response = await axios.get(
+          `/words/all?keyword=${keywords}&category=${category}&page=${page}&limit=${limit}`
         );
       }
 
@@ -34,7 +40,7 @@ export const fetchOtherWords = createAsyncThunk(
 
       if (keywords && !category && isIrregular === '') {
         response = await axios.get(
-          `/words/all?keywords=${keywords}&page=${page}&limit=${limit}`
+          `/words/all?keyword=${keywords}&page=${page}&limit=${limit}`
         );
       }
       return response.data;
@@ -57,7 +63,13 @@ export const fetchOwnWords = createAsyncThunk(
 
       if (keywords && category && isIrregular !== '') {
         response = await axios.get(
-          `/words/own?keywords=${keywords}&category=${category}&isIrregular=${isIrregular}&page=${page}&limit=${limit}`
+          `/words/own?keyword=${keywords}&category=${category}&isIrregular=${isIrregular}&page=${page}&limit=${limit}`
+        );
+      }
+
+      if (keywords && category && isIrregular === '') {
+        response = await axios.get(
+          `/words/own?keyword=${keywords}&category=${category}&page=${page}&limit=${limit}`
         );
       }
 
@@ -75,7 +87,7 @@ export const fetchOwnWords = createAsyncThunk(
 
       if (keywords && !category && isIrregular === '') {
         response = await axios.get(
-          `/words/own?keywords=${keywords}&page=${page}&limit=${limit}`
+          `/words/own?keyword=${keywords}&page=${page}&limit=${limit}`
         );
       }
       return response.data;
@@ -165,7 +177,7 @@ export const getTasks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/words/tasks');
-      return response.data.words;
+      return response.data.tasks;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

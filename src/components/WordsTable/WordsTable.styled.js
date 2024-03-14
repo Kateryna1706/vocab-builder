@@ -15,7 +15,7 @@ export const TableContainer = styled.div`
     }
   }
 
-  .progress {
+  .progressColumn {
     font-family: 'FixelDisplay-Medium', sans-serif;
     font-weight: 600;
     font-size: 18px;

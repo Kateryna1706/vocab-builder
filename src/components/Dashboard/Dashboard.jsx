@@ -12,8 +12,8 @@ import {
 import { useSelector } from 'react-redux';
 import { selectStatistics } from 'redux/words/wordsSelectors';
 
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { ReactComponent as PlusAdd } from '../Icons/plus-add.svg';
 import { ReactComponent as Switch } from '../Icons/switch-horizontal.svg';
@@ -21,8 +21,10 @@ import { ReactComponent as Switch } from '../Icons/switch-horizontal.svg';
 const Dashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
+  const navigate = useNavigate();
   const statistics = useSelector(selectStatistics);
+  const fromLink = state?.from ?? '';
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -33,7 +35,15 @@ const Dashboard = () => {
     if (event?.target !== event?.currentTarget) return;
     setIsModalOpen(false);
     document.body.classList.remove('hidden');
+    navigate({ state: { from: '' } });
   };
+
+  useEffect(() => {
+    if (fromLink === '/training') {
+      setIsModalOpen(true);
+      document.body.classList.add('hidden');
+    }
+  }, [fromLink]);
 
   return (
     <Container>
