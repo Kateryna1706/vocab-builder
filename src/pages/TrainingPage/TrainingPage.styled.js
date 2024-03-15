@@ -3,13 +3,14 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 
   box-sizing: border-box;
 
   width: 100%;
   max-width: 375px;
-  padding: 32px 16px 48px;
+  /* min-height: 100vh; */
+  padding: 24px 16px 76px;
 
   background-color: transparent;
 
@@ -41,7 +42,7 @@ export const MainBlock = styled.main`
   flex-direction: column;
   align-items: center;
 
-  min-height: 100vh;
+  /* min-height: 100vh; */
 
   background-color: #f8f8f8;
 `;
@@ -193,28 +194,3 @@ export const ButtonWrapper = styled.div`
     width: 581px;
   }
 `;
-
-// export const Button = styled.button`
-//   width: 100%;
-//   max-width: 343px;
-//   min-width: 271px;
-
-//   padding: 0;
-//   border: none;
-
-//   box-sizing: border-box;
-
-//   font-family: 'FixelDisplay-Bold', sans-serif;
-//   font-size: 16px;
-//   line-height: 24px;
-//   font-weight: 700;
-
-//   @media (min-width: 768px) {
-//     width: 215px;
-//     max-width: 215px;
-//     min-width: 215px;
-
-//     font-size: 18px;
-//     line-height: 28px;
-//   }
-// `;

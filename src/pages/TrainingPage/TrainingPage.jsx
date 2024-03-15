@@ -85,14 +85,6 @@ const TrainingPage = () => {
             <TrainingRoom />
           </>
         )}
-        {/* <ButtonWrapper>
-          <Button type="submit" onClick={handleClickAdd} className="add">
-            Add word
-          </Button>
-          <Button type="button" onClick={() => {}} className="cancel">
-            Cancel
-          </Button>
-        </ButtonWrapper> */}
       </Container>
     </MainBlock>
   );
