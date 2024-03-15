@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/vocab-builder/static/css/main.99e21df0.css",
-    "main.js": "/vocab-builder/static/js/main.9c35ab64.js",
+    "main.js": "/vocab-builder/static/js/main.ce4ed126.js",
     "static/js/606.9b41cefb.chunk.js": "/vocab-builder/static/js/606.9b41cefb.chunk.js",
     "static/js/312.ebb163aa.chunk.js": "/vocab-builder/static/js/312.ebb163aa.chunk.js",
     "static/js/209.32b166fb.chunk.js": "/vocab-builder/static/js/209.32b166fb.chunk.js",
     "static/js/287.f4d5f148.chunk.js": "/vocab-builder/static/js/287.f4d5f148.chunk.js",
-    "static/js/928.d1099d83.chunk.js": "/vocab-builder/static/js/928.d1099d83.chunk.js",
+    "static/js/892.e2619922.chunk.js": "/vocab-builder/static/js/892.e2619922.chunk.js",
     "static/js/306.a033ebd5.chunk.js": "/vocab-builder/static/js/306.a033ebd5.chunk.js",
     "static/js/650.b515a228.chunk.js": "/vocab-builder/static/js/650.b515a228.chunk.js",
     "static/js/160.b49444fc.chunk.js": "/vocab-builder/static/js/160.b49444fc.chunk.js",
@@ -39,12 +39,12 @@
     "static/media/Nav.svg": "/vocab-builder/static/media/Nav.a1d19c1ac5bed5ae615c3ee42d2262f6.svg",
     "static/media/cross.svg": "/vocab-builder/static/media/cross.564f255c8df3a91bbc72d8200219338b.svg",
     "main.99e21df0.css.map": "/vocab-builder/static/css/main.99e21df0.css.map",
-    "main.9c35ab64.js.map": "/vocab-builder/static/js/main.9c35ab64.js.map",
+    "main.ce4ed126.js.map": "/vocab-builder/static/js/main.ce4ed126.js.map",
     "606.9b41cefb.chunk.js.map": "/vocab-builder/static/js/606.9b41cefb.chunk.js.map",
     "312.ebb163aa.chunk.js.map": "/vocab-builder/static/js/312.ebb163aa.chunk.js.map",
     "209.32b166fb.chunk.js.map": "/vocab-builder/static/js/209.32b166fb.chunk.js.map",
     "287.f4d5f148.chunk.js.map": "/vocab-builder/static/js/287.f4d5f148.chunk.js.map",
-    "928.d1099d83.chunk.js.map": "/vocab-builder/static/js/928.d1099d83.chunk.js.map",
+    "892.e2619922.chunk.js.map": "/vocab-builder/static/js/892.e2619922.chunk.js.map",
     "306.a033ebd5.chunk.js.map": "/vocab-builder/static/js/306.a033ebd5.chunk.js.map",
     "650.b515a228.chunk.js.map": "/vocab-builder/static/js/650.b515a228.chunk.js.map",
     "160.b49444fc.chunk.js.map": "/vocab-builder/static/js/160.b49444fc.chunk.js.map",
@@ -52,6 +52,6 @@
   },
   "entrypoints": [
     "static/css/main.99e21df0.css",
-    "static/js/main.9c35ab64.js"
+    "static/js/main.ce4ed126.js"
   ]
 }
