@@ -11,12 +11,13 @@ const ProgressBar = ({
   sizeFromTablet,
   trackColor,
   progressColor,
+  training,
 }) => {
   const { isTablet, isDesktop } = useAdaptive();
   const { pathname } = useLocation();
 
   return (
-    <ProgressWrapper>
+    <ProgressWrapper $training={training}>
       {(isTablet || isDesktop) && pathname !== '/training' && (
         <span className="progressColumn">{progress}</span>
       )}

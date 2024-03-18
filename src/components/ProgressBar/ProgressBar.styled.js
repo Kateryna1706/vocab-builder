@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const ProgressWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: ${props => (props.$training ? 'end' : 'center')};
   align-items: center;
   gap: 16px;
 
@@ -16,6 +16,6 @@ export const ProgressWrapper = styled.div`
   }
 
   @media (min-width: 1440px) {
-    justify-content: start;
+    justify-content: ${props => (props.$training ? 'end' : 'start')};
   }
 `;

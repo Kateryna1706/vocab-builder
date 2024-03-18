@@ -13,13 +13,13 @@ import { selectAnswers } from 'redux/words/wordsSelectors';
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Notify } from 'notiflix';
 
 import bloodReport from '../../image/blood-report.webp';
 import bloodReport2 from '../../image/blood-report@2x.webp';
 
 const TrainingPage = () => {
   const [tasksTotal, setTasksTotal] = useState(0);
-
   const dispatch = useDispatch();
   const answers = useSelector(selectAnswers);
   const progress = useMemo(() => {
@@ -31,14 +31,14 @@ const TrainingPage = () => {
   useEffect(() => {
     dispatch(getTasks())
       .then(data => {
-        setTasksTotal(data.payload.length);
+        setTasksTotal(data.length);
       })
-      .catch(error => console.log(error));
+      .catch(error => Notify.failure(error));
   }, [dispatch, tasksTotal]);
 
   return (
     <MainBlock>
-      <Container>
+      <Container $hasTasks={tasksTotal !== 0}>
         {tasksTotal === 0 ? (
           <WrapperMessage>
             <img
@@ -81,6 +81,7 @@ const TrainingPage = () => {
               sizeFromTablet="64px"
               trackColor="#85AA9F"
               progressColor="#FFFFFF"
+              training={true}
             />
             <TrainingRoom />
           </>

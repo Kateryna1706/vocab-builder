@@ -3,19 +3,33 @@ import styled from '@emotion/styled';
 export const WrapperTraining = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
   height: 100%;
+  margin-top: 8px;
+`;
+
+export const Wrapper = styled.div`
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    border: 18px solid #ffffff;
+    border-radius: 15px;
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+  }
 `;
 
 export const WrapperTranslation = styled.div`
   box-sizing: border-box;
 
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 
-  /* width: 100%; */
   max-width: 343px;
   height: 195px;
   padding: 22px 22px 20px;
@@ -24,12 +38,14 @@ export const WrapperTranslation = styled.div`
 
   background-color: #fcfcfc;
 
-  & > div {
+  .position {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
   }
 
   input {
+    width: 100%;
     border-color: transparent;
 
     outline: none;
@@ -46,15 +62,33 @@ export const WrapperTranslation = styled.div`
     &:focus {
       border-bottom: 2px solid #85aa9f;
     }
+
+    @media (min-width: 768px) {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: 100%;
+    max-width: 668px;
+    height: 282px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 50%;
+    height: 302px;
+
+    border-bottom: none;
+    border-right: 1px solid #dbdbdb;
   }
 `;
 
 export const ButtonNext = styled.button`
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-
+  padding: 0;
   border: none;
 
   background-color: transparent;
@@ -67,16 +101,19 @@ export const ButtonNext = styled.button`
 
     color: rgba(18, 20, 23, 0.5);
   }
+
+  &:hover span,
+  &:focus span {
+    color: #85aa9f;
+  }
 `;
 
 export const WrapperEnglishWord = styled.div`
   box-sizing: border-box;
 
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 
-  /* width: 100%; */
   max-width: 343px;
   height: 195px;
   padding: 22px 22px 20px;
@@ -84,29 +121,39 @@ export const WrapperEnglishWord = styled.div`
   background-color: #fcfcfc;
 
   .word {
-    align-self: flex-start;
     font-family: 'FixelDisplay-Medium', sans-serif;
     font-size: 16px;
     line-height: 24px;
     font-weight: 600;
 
     color: #121417;
+
+    @media (min-width: 768px) {
+      font-size: 20px;
+      line-height: 30px;
+    }
   }
 
-  div {
-    align-self: flex-end;
+  @media (min-width: 768px) {
+    width: 668px;
+    max-width: 668px;
+    height: 282px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 50%;
+    height: 302px;
   }
 `;
 
 export const WrapperTextAndIcon = styled.div`
   display: flex;
   align-items: center;
+  align-self: flex-end;
   gap: 8px;
 
-  margin-bottom: 8px;
-
   @media (min-width: 768px) {
-    margin-bottom: 0;
+    align-self: flex-start;
   }
 `;
 
@@ -176,6 +223,17 @@ export const ButtonWrapper = styled.div`
       }
     }
   }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 10px;
+
+    margin-top: 40px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-top: 80px;
+  }
 `;
 
 export const Button = styled.button`
@@ -201,28 +259,4 @@ export const Button = styled.button`
     font-size: 18px;
     line-height: 28px;
   }
-  /* .button {
-    width: 100%;
-    max-width: 343px;
-    min-width: 271px;
-
-    padding: 0;
-    border: none;
-
-    box-sizing: border-box;
-
-    font-family: 'FixelDisplay-Bold', sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 700;
-
-    @media (min-width: 768px) {
-      width: 215px;
-      max-width: 215px;
-      min-width: 215px;
-
-      font-size: 18px;
-      line-height: 28px;
-    }
-  } */
 `;

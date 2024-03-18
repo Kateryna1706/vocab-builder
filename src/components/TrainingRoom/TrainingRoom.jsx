@@ -3,6 +3,7 @@ import {
   ButtonNext,
   ButtonWrapper,
   TextIcon,
+  Wrapper,
   WrapperEnglishWord,
   WrapperTextAndIcon,
   WrapperTraining,
@@ -27,23 +28,27 @@ const TrainingRoom = () => {
 
   return (
     <WrapperTraining>
-      <div>
+      <Wrapper>
         <WrapperTranslation>
-          <input
-            value={translation}
-            onChange={handleChangeInput}
-            onFocus={() => setTranslation('')}
-          />
-          <div>
+          <div className="position">
+            <input
+              value={translation}
+              onChange={handleChangeInput}
+              onFocus={() => setTranslation('')}
+              onBlur={() =>
+                translation !== '' ? null : setTranslation('Введіть переклад')
+              }
+            />
+
             <ButtonNext>
               <span>Next</span>
               <Switch />
             </ButtonNext>
-            <WrapperTextAndIcon>
-              <Ukrainian />
-              <TextIcon>Ukrainian</TextIcon>
-            </WrapperTextAndIcon>
           </div>
+          <WrapperTextAndIcon>
+            <Ukrainian />
+            <TextIcon>Ukrainian</TextIcon>
+          </WrapperTextAndIcon>
         </WrapperTranslation>
         <WrapperEnglishWord>
           <span className="word">Break in</span>
@@ -52,7 +57,7 @@ const TrainingRoom = () => {
             <TextIcon>English</TextIcon>
           </WrapperTextAndIcon>
         </WrapperEnglishWord>
-      </div>
+      </Wrapper>
       <ButtonWrapper>
         <Button type="submit" onClick={handleClickSave} className="save">
           Save

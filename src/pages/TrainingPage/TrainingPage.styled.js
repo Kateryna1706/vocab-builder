@@ -3,14 +3,13 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  justify-content: center;
 
   box-sizing: border-box;
 
   width: 100%;
   max-width: 375px;
-  /* min-height: 100vh; */
-  padding: 24px 16px 76px;
+  padding: ${props => (props.$hasTasks ? '24px 16px 76px' : '75px 16px')};
 
   background-color: transparent;
 
@@ -27,13 +26,15 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     width: 768px;
     max-width: 768px;
-    padding: 80px 32px 48px;
+
+    padding: ${props => (props.$hasTasks ? '62px 32px 104px' : '140px 16px')};
   }
 
   @media (min-width: 1440px) {
-    width: 1440px;
-    max-width: 1440px;
-    padding: 80px 100px 48px;
+    width: 1270px;
+    max-width: 1270px;
+
+    padding: ${props => (props.$hasTasks ? '62px 15px 104px' : '193px 16px')};
   }
 `;
 
@@ -42,7 +43,7 @@ export const MainBlock = styled.main`
   flex-direction: column;
   align-items: center;
 
-  /* min-height: 100vh; */
+  min-height: 100vh;
 
   background-color: #f8f8f8;
 `;
@@ -52,8 +53,6 @@ export const WrapperMessage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  padding-top: 43px;
 
   img {
     margin-bottom: 33px;
@@ -95,8 +94,6 @@ export const WrapperMessage = styled.div`
   }
 
   @media (min-width: 768px) {
-    padding-top: 60px;
-
     .wrapperText {
       width: 581px;
     }
@@ -104,8 +101,6 @@ export const WrapperMessage = styled.div`
 
   @media (min-width: 1440px) {
     flex-direction: row-reverse;
-
-    padding-top: 113px;
   }
 `;
 
