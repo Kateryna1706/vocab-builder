@@ -1,14 +1,18 @@
-import { Suspense, lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import Loader from './Loader/Loader';
 import MainLayout from './MainLayout/MainLayout';
+import PrivateRoute from './PrivateRoute';
+import RestrictedRoute from './RestrictedRoute';
+
 import { refreshUser } from 'redux/auth/authOperations';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   selectError,
   selectIsLoggedIn,
   selectToken,
 } from 'redux/auth/authSelectors';
-import Loader from './Loader/Loader';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { Suspense, lazy, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { Notify } from 'notiflix';
 
 const Register = lazy(() => import('../pages/RegisterPage/RegisterPage'));
@@ -38,13 +42,42 @@ export const App = () => {
     <div>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path={'/'} element={<MainLayout />}>
-            <Route path={'dictionary'} element={<Dictionary />} />
-            <Route path={'recommend'} element={<Recommend />} />
-            <Route path={'training'} element={<Training />} />
+          <Route
+            path={'/'}
+            element={
+              <PrivateRoute redirectTo="/login" component={<MainLayout />} />
+            }
+          >
+            <Route
+              path={'dictionary'}
+              element={
+                <PrivateRoute redirectTo="/login" component={<Dictionary />} />
+              }
+            />
+
+            <Route
+              path={'recommend'}
+              element={
+                <PrivateRoute redirectTo="/login" component={<Recommend />} />
+              }
+            />
+            <Route
+              path={'training'}
+              element={
+                <PrivateRoute redirectTo="/login" component={<Training />} />
+              }
+            />
           </Route>
-          <Route path={'/register'} element={<Register />} />
-          <Route path={'/login'} element={<Login />} />
+          <Route
+            path={'/register'}
+            element={
+              <RestrictedRoute redirectTo="/" component={<Register />} />
+            }
+          />
+          <Route
+            path={'/login'}
+            element={<RestrictedRoute redirectTo="/" component={<Login />} />}
+          />
 
           <Route path="*" element={<Login />} />
         </Routes>
