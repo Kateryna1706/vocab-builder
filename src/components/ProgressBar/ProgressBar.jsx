@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { CircularProgress } from '@mui/joy';
 
 const ProgressBar = ({
-  progress,
+  progress = 0,
   sizeMobile,
   sizeFromTablet,
   trackColor,

@@ -1,7 +1,7 @@
 import { Backdrop, CrossClose, ModalWindow } from './Modal.styled';
 import { useEffect } from 'react';
 
-const Modal = ({ children, closeModal }) => {
+const Modal = ({ children, closeModal, isWelDone = false }) => {
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -14,7 +14,7 @@ const Modal = ({ children, closeModal }) => {
 
   return (
     <Backdrop onClick={closeModal}>
-      <ModalWindow>
+      <ModalWindow isWelDone={isWelDone}>
         <CrossClose onClick={closeModal} />
         {children}
       </ModalWindow>

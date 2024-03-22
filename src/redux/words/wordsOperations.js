@@ -177,6 +177,7 @@ export const getTasks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/words/tasks');
+
       return response.data.tasks;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -186,9 +187,10 @@ export const getTasks = createAsyncThunk(
 
 export const postAnswers = createAsyncThunk(
   'words/postAnswers',
-  async (_, thunkAPI) => {
+  async (answers, thunkAPI) => {
     try {
-      const response = await axios.post(`/words/answers`);
+      const response = await axios.post(`/words/answers`, answers);
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

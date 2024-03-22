@@ -8,7 +8,7 @@ import { useAdaptive } from 'hooks/useAdaptive';
 
 import { Pagination } from '@mui/material';
 
-const WordsPagination = ({ totalPages, data }) => {
+const WordsPagination = ({ totalPages, data = [] }) => {
   const dispatch = useDispatch();
   const { isMobile } = useAdaptive();
   const { page } = useSelector(selectFilter);

@@ -24,7 +24,7 @@ export const ModalWindow = styled.div`
   box-sizing: border-box;
 
   @media (min-width: 768px) {
-    width: 628px;
+    width: ${props => (props.isWelDone ? '528px' : '628px')};
     padding: 48px 64px;
     border-radius: 30px;
   }

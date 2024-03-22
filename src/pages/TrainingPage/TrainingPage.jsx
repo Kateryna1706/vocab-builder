@@ -8,10 +8,9 @@ import {
 } from './TrainingPage.styled';
 
 import { getTasks } from 'redux/words/wordsOperations';
-import { selectAnswers } from 'redux/words/wordsSelectors';
 
 import { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Notify } from 'notiflix';
 
@@ -20,18 +19,18 @@ import bloodReport2 from '../../image/blood-report@2x.webp';
 
 const TrainingPage = () => {
   const [tasksTotal, setTasksTotal] = useState(0);
+  const [answers, setAnswers] = useState([]);
   const dispatch = useDispatch();
-  const answers = useSelector(selectAnswers);
   const progress = useMemo(() => {
     return tasksTotal === 0 || answers.length === 0
       ? 0
-      : (answers.length / tasksTotal) * 100;
+      : Math.round((answers.length / tasksTotal) * 100);
   }, [answers.length, tasksTotal]);
 
   useEffect(() => {
     dispatch(getTasks())
       .then(data => {
-        setTasksTotal(data.length);
+        setTasksTotal(data.payload.length);
       })
       .catch(error => Notify.failure(error));
   }, [dispatch, tasksTotal]);
@@ -83,7 +82,7 @@ const TrainingPage = () => {
               progressColor="#FFFFFF"
               training={true}
             />
-            <TrainingRoom />
+            <TrainingRoom answers={answers} setAnswers={setAnswers} />
           </>
         )}
       </Container>

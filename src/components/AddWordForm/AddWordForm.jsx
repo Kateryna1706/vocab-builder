@@ -20,7 +20,6 @@ import {
 
 import { selectCategories } from 'redux/words/wordsSelectors';
 import { createWord, getStatistics } from 'redux/words/wordsOperations';
-import { changeFilter } from 'redux/words/filterSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -67,7 +66,6 @@ const AddWordForm = ({ closeModal }) => {
     const value = event.currentTarget.innerHTML;
     setCategory(value);
     setIsVerb(value === 'verb');
-    dispatch(changeFilter({ category: value }));
     setVisibleDropdown(prevState => !prevState);
   };
 
