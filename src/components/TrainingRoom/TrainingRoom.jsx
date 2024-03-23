@@ -137,9 +137,6 @@ const TrainingRoom = ({ answers, setAnswers }) => {
     }
   }, [currentTasks.length, tasks]);
 
-  console.log(correctAnswers);
-  console.log(mistakes);
-
   return (
     <WrapperTraining>
       <Wrapper>

@@ -2,6 +2,7 @@ import Loader from './Loader/Loader';
 import MainLayout from './MainLayout/MainLayout';
 import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
+import { Wrapper } from './App.styled';
 
 import { refreshUser } from 'redux/auth/authOperations';
 import {
@@ -39,7 +40,7 @@ export const App = () => {
   }, [error]);
 
   return (
-    <div>
+    <Wrapper>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route
@@ -82,6 +83,6 @@ export const App = () => {
           <Route path="*" element={<Login />} />
         </Routes>
       </Suspense>
-    </div>
+    </Wrapper>
   );
 };

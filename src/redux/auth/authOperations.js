@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'https://vocab-builder-backend.p.goit.global/api';
+axios.defaults.baseURL = 'https://vocab-builder-backend.p.goit.global/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -15,10 +15,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post(
-        'https://vocab-builder-backend.p.goit.global/api/users/signup',
-        credentials
-      );
+      const res = await axios.post('/users/signup', credentials);
 
       setAuthHeader(res.data.token);
       return res.data;
@@ -32,10 +29,7 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post(
-        'https://vocab-builder-backend.p.goit.global/api/users/signin',
-        credentials
-      );
+      const res = await axios.post('/users/signin', credentials);
 
       setAuthHeader(res.data.token);
       return res.data;
@@ -47,9 +41,7 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.post(
-      'https://vocab-builder-backend.p.goit.global/api/users/signout'
-    );
+    await axios.post('/users/signout');
 
     clearAuthHeader();
   } catch (error) {
@@ -69,9 +61,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get(
-        'https://vocab-builder-backend.p.goit.global/api/users/current'
-      );
+      const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
