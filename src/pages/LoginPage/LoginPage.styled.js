@@ -24,7 +24,6 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     gap: 140px;
     height: auto;
-    padding: 24px 32px;
   }
 
   @media (min-width: 1440px) {
@@ -50,16 +49,6 @@ export const Position = styled.div`
   }
 `;
 
-// export const Wrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   flex-grow: 3;
-
-//   @media (min-width: 768px) {
-//     flex-direction: column-reverse;
-//   }
-// `;
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -73,15 +62,10 @@ export const List = styled.ul`
   display: flex;
   justify-content: center;
   gap: 10px;
-  /* margin-top: 8px;
-  margin-bottom: 43px; */
 
   color: rgba(18, 20, 23, 0.8);
 
   @media (min-width: 768px) {
-    /* margin-top: 172px;
-    margin-bottom: 0; */
-
     font-size: 16px;
     line-height: 24px;
   }

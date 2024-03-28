@@ -17,7 +17,7 @@ export const ListNavItem = styled.li`
     display: inline-block;
     font-family: 'FixelDisplay-Medium', sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
 
     color: #fcfcfc;
 

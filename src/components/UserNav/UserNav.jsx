@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useAdaptive } from 'hooks/useAdaptive';
 
 import { NavLink } from 'react-router-dom';
+import ButtonLogOut from 'components/ButtonLogOut/ButtonLogOut';
 
 const UserNav = ({ closeMenu }) => {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const UserNav = ({ closeMenu }) => {
           </NavLink>
         </ListNavItem>
       </ListNav>
+      {!isDesktop && <ButtonLogOut isDesktop={false} />}
     </nav>
   );
 };

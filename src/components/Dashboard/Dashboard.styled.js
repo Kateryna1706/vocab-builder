@@ -58,6 +58,10 @@ export const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+
+  svg {
+    stroke: #85aa9f;
+  }
 `;
 
 export const AddWordBtn = styled.button`

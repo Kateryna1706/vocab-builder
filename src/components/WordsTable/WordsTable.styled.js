@@ -68,6 +68,12 @@ export const TableContainer = styled.div`
     @media (min-width: 768px) {
       padding: 20px;
       font-size: 18px;
+
+      &:last-of-type {
+        padding: 14px;
+
+        text-align: center;
+      }
     }
 
     @media (min-width: 1440px) {

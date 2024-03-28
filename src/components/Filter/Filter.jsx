@@ -37,7 +37,7 @@ export const Filter = () => {
   const parameters = useMemo(() => {
     return {
       keywords: debouncedKeywords,
-      category,
+      category: category === 'all categories' ? '' : category,
       isIrregular,
       page,
       limit,
@@ -117,6 +117,7 @@ export const Filter = () => {
           value={keywords}
           className="wordInput"
           onChange={handleWordFilterChange}
+          placeholder="Find the word"
         />
       </Label>
       <Label>
@@ -128,9 +129,13 @@ export const Filter = () => {
           disabled
           className="categoryInput"
           onChange={handleCategoryFilterChange}
+          placeholder="Categories"
         />
         {visibleDropdown && (
           <Dropdown>
+            <DropdownItem onClick={handleClickFilterCategory}>
+              all categories
+            </DropdownItem>
             {categories.map((item, index) => (
               <DropdownItem key={index} onClick={handleClickFilterCategory}>
                 {item}

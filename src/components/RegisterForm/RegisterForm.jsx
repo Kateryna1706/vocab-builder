@@ -87,12 +87,11 @@ const RegisterForm = () => {
 
         Notify.success(`Registration completed successfully.`);
         navigate('/dictionary');
+        actions.resetForm();
       })
       .catch(error => {
         Notify.failure(error);
       });
-
-    actions.resetForm();
   };
 
   const handleClick = () => {

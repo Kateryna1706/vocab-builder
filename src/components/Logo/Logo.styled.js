@@ -1,30 +1,14 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
   box-sizing: border-box;
 
-  width: 100%;
-  max-width: 375px;
-  padding: ${props => props.$hasPadding && '16px 16px 0'};
-
-  @media (min-width: 768px) {
-    width: 768px;
-    max-width: 768px;
-    padding: ${props => props.$hasPadding && '24px 32px 0'};
-  }
-
-  @media (min-width: 1440px) {
-    width: 1440px;
-    max-width: 1440px;
-    padding: ${props => props.$hasPadding && '24px 100px 0'};
-  }
-`;
-
-export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
   margin-right: auto;
+
+  padding: ${props => props.$hasPadding && '16px 16px 0'};
 
   span {
     font-family: 'FixelDisplay-SemiBold', sans-serif;
@@ -46,5 +30,13 @@ export const Wrapper = styled.div`
       width: 40px;
       height: 40px;
     }
+  }
+
+  @media (min-width: 768px) {
+    padding: ${props => props.$hasPadding && '24px 32px 0'};
+  }
+
+  @media (min-width: 1440px) {
+    padding: ${props => props.$hasPadding && '24px 100px 0'};
   }
 `;

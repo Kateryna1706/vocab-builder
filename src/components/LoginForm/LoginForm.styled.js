@@ -3,11 +3,12 @@ import styled from '@emotion/styled';
 import { Form } from 'formik';
 
 export const FormContainer = styled.div`
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
   align-self: center;
   flex-grow: 3;
-  box-sizing: border-box;
   width: 100%;
   max-width: 375px;
   padding: 32px 16px;

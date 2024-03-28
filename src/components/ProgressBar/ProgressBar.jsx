@@ -19,7 +19,7 @@ const ProgressBar = ({
   return (
     <ProgressWrapper $training={training}>
       {(isTablet || isDesktop) && pathname !== '/training' && (
-        <span className="progressColumn">{progress}</span>
+        <span className="progressColumn">{progress}%</span>
       )}
       <CircularProgress
         determinate

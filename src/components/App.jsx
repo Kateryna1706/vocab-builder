@@ -5,16 +5,11 @@ import RestrictedRoute from './RestrictedRoute';
 import { Wrapper } from './App.styled';
 
 import { refreshUser } from 'redux/auth/authOperations';
-import {
-  selectError,
-  selectIsLoggedIn,
-  selectToken,
-} from 'redux/auth/authSelectors';
+import { selectIsLoggedIn, selectToken } from 'redux/auth/authSelectors';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Notify } from 'notiflix';
 
 const Register = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const Login = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -26,18 +21,12 @@ export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const error = useSelector(selectError);
 
   useEffect(() => {
-    if (!token || isLoggedIn) return;
+    if (!token || !isLoggedIn) return;
 
     dispatch(refreshUser());
   }, [token, dispatch, isLoggedIn]);
-
-  useEffect(() => {
-    if (!error) return;
-    Notify.failure(error);
-  }, [error]);
 
   return (
     <Wrapper>
@@ -80,7 +69,12 @@ export const App = () => {
             element={<RestrictedRoute redirectTo="/" component={<Login />} />}
           />
 
-          <Route path="*" element={<Login />} />
+          <Route
+            path="*"
+            element={
+              <PrivateRoute redirectTo="/login" component={<Dictionary />} />
+            }
+          />
         </Routes>
       </Suspense>
     </Wrapper>

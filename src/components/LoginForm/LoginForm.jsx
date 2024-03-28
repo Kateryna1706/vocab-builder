@@ -82,12 +82,11 @@ const LoginForm = () => {
 
         Notify.success(`Login completed successfully.`);
         navigate('/dictionary');
+        actions.resetForm();
       })
       .catch(error => {
         Notify.failure(error);
       });
-
-    actions.resetForm();
   };
 
   return (

@@ -20,8 +20,8 @@ const WellDoneModal = ({ closeModal, correctAnswers, mistakes }) => {
         <ListWrapper>
           <span>Mistakes:</span>
           <ul>
-            {mistakes.map((answer, id) => (
-              <li key={id}>{answer.en}</li>
+            {mistakes.map((word, id) => (
+              <li key={id}>{word}</li>
             ))}
           </ul>
           <img

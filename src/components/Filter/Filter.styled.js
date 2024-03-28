@@ -36,6 +36,15 @@ export const Label = styled.label`
 
     background-color: transparent;
 
+    &::placeholder {
+      font-family: 'FixelDisplay-Medium', sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+
+      color: #121417;
+    }
+
     &:hover,
     &:focus {
       outline-color: #85aa9f;

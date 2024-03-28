@@ -1,15 +1,16 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.div`
+export const Button = styled.button`
   display: flex;
   flex-direction: column;
-  align-items: start;
   gap: 2px;
 
   span {
     font-family: 'FixelDisplay-Medium', sans-serif;
     font-weight: 600;
     font-size: 14px;
+
+    text-align: start;
 
     color: #121417;
 
@@ -19,8 +20,15 @@ export const Wrapper = styled.div`
     }
   }
 
+  svg {
+    stroke: #85aa9f;
+  }
+
   @media (min-width: 1440px) {
     flex-direction: row;
+    align-items: center;
     gap: 8px;
+
+    margin: 0 auto;
   }
 `;

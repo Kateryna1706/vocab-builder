@@ -1,12 +1,13 @@
 import ContextMenu from 'components/ContextMenu/ContextMenu';
-import { Wrapper } from './WordBar.styled';
+import { Button } from './WordBar.styled';
 
 import { addWord, getStatistics } from 'redux/words/wordsOperations';
 
 import { useDispatch } from 'react-redux';
-import { useAdaptive } from 'hooks/useAdaptive';
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useAdaptive } from 'hooks/useAdaptive';
+import { useClickOutside } from 'hooks/useClickOutside';
 
 import { Notify } from 'notiflix';
 
@@ -19,6 +20,7 @@ const WordBar = ({ original, openModal }) => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const { isTablet, isDesktop } = useAdaptive();
+  const menuRef = useRef(null);
 
   const handleContexMenu = id => {
     setContextMenuId(id);
@@ -51,15 +53,23 @@ const WordBar = ({ original, openModal }) => {
       });
   };
 
+  useClickOutside(menuRef, () => {
+    if (contextMenuIsOpen) {
+      setContextMenuIsOpen(false);
+    }
+  });
+
   return pathname === '/recommend' ? (
-    <Wrapper>
+    <Button type="button" onClick={() => handleAddWord(original._id)}>
       {(isTablet || isDesktop) && <span>Add to dictionary</span>}
-      <button type="button" onClick={() => handleAddWord(original._id)}>
-        <Switch />
-      </button>
-    </Wrapper>
+      <Switch />
+    </Button>
   ) : (
-    <button type="button" onClick={() => handleContexMenu(original._id)}>
+    <button
+      type="button"
+      onClick={() => handleContexMenu(original._id)}
+      ref={menuRef}
+    >
       <span>...</span>
       {contextMenuId === original._id && contextMenuIsOpen && (
         <ContextMenu

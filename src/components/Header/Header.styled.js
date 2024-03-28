@@ -1,12 +1,6 @@
 import styled from '@emotion/styled';
 
-export const ContainerHeader = styled.header`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const Container = styled.div`
+export const Container = styled.header`
   box-sizing: border-box;
 
   position: relative;
@@ -41,8 +35,7 @@ export const WrapperNavAndBar = styled.div`
 
   display: flex;
   flex-direction: ${props => (props.$burgerMenu ? 'column' : 'row')};
-  justify-content: start;
-  gap: ${props => (props.$burgerMenu ? '139px' : '0')};
+  justify-content: space-between;
 
   height: ${props => (props.$burgerMenu ? '100vh' : 'auto')};
   width: ${props => (props.$burgerMenu ? '185px' : 'auto')};
@@ -56,9 +49,6 @@ export const WrapperNavAndBar = styled.div`
     @media (min-width: 768px) and (max-width: 1439px) {
       width: 498px;
       height: 435px;
-    }
-
-    @media (min-width: 1440px) {
     }
   }
 
@@ -111,5 +101,9 @@ export const Wrapper = styled.div`
       width: 40px;
       height: 28px;
     }
+  }
+
+  @media (min-width: 768px) {
+    gap: ${props => (props.$burgerMenu ? '0' : '28px')};
   }
 `;
